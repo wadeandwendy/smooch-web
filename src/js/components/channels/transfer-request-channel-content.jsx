@@ -35,7 +35,7 @@ export class TransferRequestChannelContentComponent extends Component {
         const {transferRequestCode, hasError} = channelState;
 
         if (hasError) {
-            return <a className={ 'CLASS_PREFIX-error-link' }
+            return <a className={ 'spark-error-link' }
                       onClick={ this.onTryAgain }>
                        { transferError }
                    </a>;

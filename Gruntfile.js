@@ -43,8 +43,8 @@ module.exports = function(grunt) {
             js: {
                 // Files to be uploaded.
                 upload: [{
-                    src: 'dist/DOMAIN.js',
-                    dest: 'DOMAIN.min.js',
+                    src: 'dist/sparkcentral.js',
+                    dest: 'sparkcentral.min.js',
                     options: {
                         headers: {
                             'Cache-Control': 'max-age=300, public'
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 CallerReference: Date.now().toString(),
                 Paths: {
                     Quantity: 1,
-                    Items: ['/DOMAIN.min.js']
+                    Items: ['/sparkcentral.min.js']
                 }
             }
         },
@@ -96,9 +96,9 @@ module.exports = function(grunt) {
                 bump: false,
                 commit: true,
                 push: false,
-                remote: 'git@github.com:DOMAIN/DOMAIN-js.git',
+                remote: 'git@github.com:sparkcentral/sparkcentral-js.git',
                 github: {
-                    repo: 'DOMAIN/DOMAIN-js',
+                    repo: 'sparkcentral/sparkcentral-js',
                     accessTokenVar: 'GITHUB_ACCESS_TOKEN',
                     releaseNotes: 'release_notes'
                 }
@@ -136,7 +136,7 @@ module.exports = function(grunt) {
                 }
             },
             addDist: {
-                cmd: 'git add --force dist/DOMAIN.js'
+                cmd: 'git add --force dist/sparkcentral.js'
             },
             addLib: {
                 cmd: 'git add --force lib/'

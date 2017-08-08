@@ -1,4 +1,4 @@
-.CLASS_PREFIX-typing-indicator-container {
+.spark-typing-indicator-container {
     display: block;
     clear: both;
     padding-top: 2px;
@@ -12,9 +12,9 @@
         opacity: 1;
     }
 
-    .CLASS_PREFIX-typing-indicator {
+    .spark-typing-indicator {
         clear: both;
-        background-color: @CLASS_PREFIX-light-grey;
+        background-color: @spark-light-grey;
         width: auto;
         height: 35px;
         border-radius: 14px;
@@ -25,7 +25,7 @@
         animation: 2s bulge infinite ease-out;
         vertical-align: middle;
 
-        &.CLASS_PREFIX-typing-indicator-first {
+        &.spark-typing-indicator-first {
             border-top-left-radius: 14px;
         }
 
@@ -53,14 +53,14 @@
         }
     }
 
-    .CLASS_PREFIX-typing-indicator-avatar {
-        .CLASS_PREFIX-msg-avatar();
+    .spark-typing-indicator-avatar {
+        .spark-msg-avatar();
         margin-bottom: 0px;
         vertical-align: middle;
     }
 
-    .CLASS_PREFIX-typing-indicator-avatar-placeholder {
-        .CLASS_PREFIX-msg-avatar-placeholder();
+    .spark-typing-indicator-avatar-placeholder {
+        .spark-msg-avatar-placeholder();
     }
 
     @-webkit-keyframes blink {

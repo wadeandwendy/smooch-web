@@ -10,7 +10,7 @@ import * as appUtils from '../../src/js/utils/app';
 import * as commonActions from '../../src/js/actions/common-actions';
 import * as appStateActions from '../../src/js/actions/app-state-actions';
 
-import { BRAND } from '../../src/js/DOMAIN';
+import { Sparkcentral } from '../../src/js/sparkcentral';
 
 const AppStore = require('../../src/js/store');
 const store = AppStore.store;
@@ -57,9 +57,9 @@ const defaultState = {
     app: {}
 };
 
-describe('BRAND', () => {
+describe('Sparkcentral', () => {
     const sandbox = sinon.sandbox.create();
-    let DOMAIN;
+    let sparkcentral;
 
     let loginStub;
     let sendMessageStub;
@@ -72,12 +72,12 @@ describe('BRAND', () => {
     let mockedStore;
 
     beforeEach(() => {
-        sandbox.stub(BRAND.prototype, 'render');
+        sandbox.stub(Sparkcentral.prototype, 'render');
         sandbox.spy(commonActions, 'reset');
         sandbox.spy(appStateActions, 'openWidget');
         sandbox.spy(appStateActions, 'closeWidget');
-        DOMAIN = new BRAND();
-        DOMAIN._container = '_container';
+        sparkcentral = new Sparkcentral();
+        sparkcentral._container = '_container';
         sandbox.stub(document.body, 'appendChild');
         sandbox.stub(document.body, 'removeChild');
         sandbox.stub(document, 'addEventListener', (eventName, cb) => {
@@ -91,14 +91,14 @@ describe('BRAND', () => {
     afterEach(() => {
         sandbox.restore();
         restoreAppStore();
-        delete DOMAIN.appToken;
+        delete sparkcentral.appToken;
     });
 
     describe('Init', () => {
         const state = Object.assign({}, defaultState);
 
         beforeEach(() => {
-            loginStub = sandbox.stub(DOMAIN, 'login');
+            loginStub = sandbox.stub(sparkcentral, 'login');
             loginStub.resolves();
             mockedStore = mockAppStore(sandbox, state);
         });
@@ -111,8 +111,8 @@ describe('BRAND', () => {
                 email: 'some@email.com'
             };
 
-            return DOMAIN.init(props).then(() => {
-                DOMAIN.appToken.should.eq(props.appToken);
+            return sparkcentral.init(props).then(() => {
+                sparkcentral.appToken.should.eq(props.appToken);
                 loginStub.should.have.been.calledWith(props.userId, props.jwt, {
                     email: 'some@email.com'
                 });
@@ -172,7 +172,7 @@ describe('BRAND', () => {
                 email: 'some@email.com'
             };
 
-            return DOMAIN.login(props.userId, props.jwt).then(() => {
+            return sparkcentral.login(props.userId, props.jwt).then(() => {
                 mockedStore.dispatch.firstCall.should.have.been.calledWith({
                     type: 'RESET_AUTH'
                 });
@@ -204,7 +204,7 @@ describe('BRAND', () => {
                     email: 'some@email.com'
                 };
 
-                return DOMAIN.login(props.userId, props.jwt).then(() => {
+                return sparkcentral.login(props.userId, props.jwt).then(() => {
                     const callArgs = loginStub.args[0][0];
                     callArgs.userId.should.eq(props.userId);
                     immediateUpdateStub.should.have.been.calledWith, {
@@ -235,7 +235,7 @@ describe('BRAND', () => {
                     email: 'some@email.com'
                 };
 
-                return DOMAIN.login(props.userId, props.jwt).then(() => {
+                return sparkcentral.login(props.userId, props.jwt).then(() => {
                     const callArgs = loginStub.args[0][0];
                     callArgs.userId.should.eq(props.userId);
 
@@ -264,7 +264,7 @@ describe('BRAND', () => {
                 email: 'some@email.com'
             };
 
-            return DOMAIN.track('some-event', props).then(() => {
+            return sparkcentral.track('some-event', props).then(() => {
                 trackEventStub.should.have.been.calledWith('some-event', props);
             });
         });
@@ -279,7 +279,7 @@ describe('BRAND', () => {
         });
 
         it('should call the conversation service', () => {
-            return DOMAIN.sendMessage('here is my message').then(() => {
+            return sparkcentral.sendMessage('here is my message').then(() => {
                 sendMessageStub.should.have.been.calledWith('here is my message');
             });
         });
@@ -299,13 +299,13 @@ describe('BRAND', () => {
         describe('conversation exists', () => {
 
             it('should call handleConversationUpdated', () => {
-                return DOMAIN.getConversation().then(() => {
+                return sparkcentral.getConversation().then(() => {
                     handleConversationUpdatedStub.should.have.been.calledOnce;
                 });
             });
 
             it('should resolve conversation object', () => {
-                return DOMAIN.getConversation().then((conversation) => {
+                return sparkcentral.getConversation().then((conversation) => {
                     if (!conversation.messages) {
                         return Promise.reject(new Error('Conversation not found'));
                     }
@@ -313,7 +313,7 @@ describe('BRAND', () => {
             });
 
             it('should update conversationStarted to true ', () => {
-                return DOMAIN.getConversation().then(() => {
+                return sparkcentral.getConversation().then(() => {
                     mockedStore.dispatch.should.have.been.calledWith({
                         type: 'UPDATE_USER',
                         properties: {
@@ -330,13 +330,13 @@ describe('BRAND', () => {
             });
 
             it('should reject', (done) => {
-                return DOMAIN.getConversation()
+                return sparkcentral.getConversation()
                     .catch(() => done())
                     .then(() => done(new Error('Promise should not have resolved')));
             });
 
             it('should not update conversationStarted to true ', () => {
-                return DOMAIN.getConversation().catch(() => {
+                return sparkcentral.getConversation().catch(() => {
                     mockedStore.dispatch.should.not.have.been.calledWith({
                         type: 'UPDATE_USER',
                         properties: {
@@ -369,7 +369,7 @@ describe('BRAND', () => {
             });
 
             it('should call handleConversationUpdated', () => {
-                return DOMAIN.updateUser({
+                return sparkcentral.updateUser({
                     email: 'update@me.com'
                 }).then(() => {
                     updateUserStub.should.have.been.calledWith({
@@ -391,7 +391,7 @@ describe('BRAND', () => {
             });
 
             it('should not handleConversationUpdated', () => {
-                return DOMAIN.updateUser({
+                return sparkcentral.updateUser({
                     email: 'update@me.com'
                 }).then(() => {
                     updateUserStub.should.have.been.calledWith({
@@ -406,11 +406,11 @@ describe('BRAND', () => {
 
     describe('Logout', () => {
         beforeEach(() => {
-            loginStub = sandbox.stub(DOMAIN, 'login');
+            loginStub = sandbox.stub(sparkcentral, 'login');
         });
 
         it('should call login', () => {
-            DOMAIN.logout();
+            sparkcentral.logout();
             loginStub.should.have.been.called;
         });
     });
@@ -419,23 +419,23 @@ describe('BRAND', () => {
         beforeEach(() => {
             mockedStore = mockAppStore(sandbox, defaultState);
             disconnectFayeStub = sandbox.stub(conversationService, 'disconnectFaye');
-            loginStub = sandbox.stub(DOMAIN, 'login').resolves();
+            loginStub = sandbox.stub(sparkcentral, 'login').resolves();
         });
 
         describe('with init first', () => {
             beforeEach((done) => {
-                DOMAIN.init().then(done);
+                sparkcentral.init().then(done);
             });
 
             it('should reset store state and remove the container', () => {
-                DOMAIN.destroy();
+                sparkcentral.destroy();
                 commonActions.reset.should.have.been.calledOnce;
                 document.body.removeChild.should.have.been.calledOnce;
             });
 
             it('should not remove the container from body if it is undefined', () => {
-                delete DOMAIN._container;
-                DOMAIN.destroy();
+                delete sparkcentral._container;
+                sparkcentral.destroy();
                 commonActions.reset.should.have.been.calledOnce;
                 document.body.removeChild.should.not.have.been.calledOnce;
             });
@@ -443,7 +443,7 @@ describe('BRAND', () => {
 
         describe('without init first', () => {
             it('should do nothing', () => {
-                DOMAIN.destroy();
+                sparkcentral.destroy();
                 commonActions.reset.should.not.have.been.calledOnce;
                 document.body.removeChild.should.not.have.been.calledOnce;
             });
@@ -451,15 +451,15 @@ describe('BRAND', () => {
 
         describe('with init first then destroy twice', () => {
             beforeEach((done) => {
-                DOMAIN.init().then(done);
+                sparkcentral.init().then(done);
             });
 
             it('should do nothing on the second call', () => {
-                DOMAIN.destroy();
+                sparkcentral.destroy();
                 commonActions.reset.should.have.been.calledOnce;
                 document.body.removeChild.should.have.been.calledOnce;
 
-                DOMAIN.destroy();
+                sparkcentral.destroy();
                 commonActions.reset.should.not.have.been.calledTwice;
                 document.body.removeChild.should.not.have.been.calledTwice;
             });
@@ -474,7 +474,7 @@ describe('BRAND', () => {
             });
 
             it('should dispatch open action', () => {
-                DOMAIN.open();
+                sparkcentral.open();
                 appStateActions.openWidget.should.have.been.calledOnce;
             });
         });
@@ -490,7 +490,7 @@ describe('BRAND', () => {
             });
 
             it('should not dispatch open action', () => {
-                DOMAIN.open();
+                sparkcentral.open();
                 appStateActions.openWidget.should.not.have.been.called;
             });
         });
@@ -503,7 +503,7 @@ describe('BRAND', () => {
             });
 
             it('should dispatch close action', () => {
-                DOMAIN.close();
+                sparkcentral.close();
                 appStateActions.closeWidget.should.have.been.calledOnce;
             });
         });
@@ -519,7 +519,7 @@ describe('BRAND', () => {
             });
 
             it('should not dispatch close action', () => {
-                DOMAIN.close();
+                sparkcentral.close();
                 appStateActions.closeWidget.should.not.have.been.called;
             });
         });
@@ -534,7 +534,7 @@ describe('BRAND', () => {
         });
 
         it('should call the conversation service', () => {
-            return DOMAIN.getUserId(mockedStore.getState()).should.eq('1234');
+            return sparkcentral.getUserId(mockedStore.getState()).should.eq('1234');
         });
     });
 
@@ -544,7 +544,7 @@ describe('BRAND', () => {
         });
 
         it('should call the core service', () => {
-            DOMAIN.getCore();
+            sparkcentral.getCore();
             coreStub.should.have.been.calledOnce;
         });
     });

@@ -15,7 +15,7 @@ export class SettingsComponent extends Component {
         const {settings} = this.props;
         const settingsComponent = hasChannels(settings) ? <NotificationsSettings /> : <EmailSettings />;
 
-        return <div className='CLASS_PREFIX-settings'>
+        return <div className='spark-settings'>
                    { settingsComponent }
                </div>;
     }

@@ -1,6 +1,6 @@
 @import "telephone-input";
 
-.CLASS_PREFIX-channel {
+.spark-channel {
     box-sizing: border-box;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     position: absolute;
@@ -14,12 +14,12 @@
     line-height: 1.5;
     font-size: 14px;
 
-    &.CLASS_PREFIX-channel-visible {
+    &.spark-channel-visible {
         .transition(width 250ms);
         width: 100%;
     }
 
-    &.CLASS_PREFIX-channel-hidden {
+    &.spark-channel-hidden {
         .transition(width 250ms);
         width: 0;
     }
@@ -51,15 +51,15 @@
         }
         .channel-description {
             margin-bottom: 20px;
-            color: @CLASS_PREFIX-base-text-color;
+            color: @spark-base-text-color;
         }
     }
 
     .channel-content {
         a, a:visited {
-            color: @CLASS_PREFIX-blue;
+            color: @spark-blue;
 
-            &.CLASS_PREFIX-error-link {
+            &.spark-error-link {
                 color: @brand-danger;
                 cursor: pointer;
             }
@@ -76,7 +76,7 @@
         }
     }
 
-    .CLASS_PREFIX-fb-button-wrapper {
+    .spark-fb-button-wrapper {
         text-align: left;
         // -76px is half the width of the 'Send to Messenger' button
         transform: translateX(-76px);

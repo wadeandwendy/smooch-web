@@ -1,3 +1,3 @@
-import {BRAND} from './DOMAIN';
+import {Sparkcentral} from './sparkcentral';
 
-module.exports = new BRAND();
+module.exports = new Sparkcentral();

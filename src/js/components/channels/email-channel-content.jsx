@@ -5,12 +5,12 @@ export class EmailChannelContentComponent extends Component {
     static propTypes = {
         linkColor: PropTypes.string,
         fromAddress: PropTypes.string,
-        DOMAINAddress: PropTypes.string.isRequired
+        sparkcentralAddress: PropTypes.string.isRequired
     };
 
     render() {
-        const {linkColor, fromAddress, DOMAINAddress} = this.props;
-        const email = fromAddress || DOMAINAddress;
+        const {linkColor, fromAddress, sparkcentralAddress} = this.props;
+        const email = fromAddress || sparkcentralAddress;
 
         const styleOverride = linkColor ? {
             color: `#${linkColor}`

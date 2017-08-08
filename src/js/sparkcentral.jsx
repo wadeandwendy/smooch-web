@@ -43,7 +43,7 @@ function renderWidget(container) {
         return container;
     } else {
         const el = document.createElement('div');
-        el.setAttribute('id', 'CLASS_PREFIX-holder');
+        el.setAttribute('id', 'spark-holder');
         render(<Root store={ store } />, el);
 
         waitForPage().then(() => {
@@ -52,19 +52,6 @@ function renderWidget(container) {
 
         return el;
     }
-}
-
-function renderLink() {
-    const el = document.createElement('div');
-
-    render(<a href='https://smooch.io/live-web-chat/?utm_source=widget'>Messaging by smooch.io</a>, el);
-
-    waitForPage().then(() => {
-        document.body.appendChild(el);
-        setTimeout(() => el.className = '', 200);
-    });
-
-    return el;
 }
 
 observable.on('message:sent', (message) => {
@@ -108,7 +95,7 @@ function onStoreChange({messages, unreadCount}) {
     }
 }
 
-export class BRAND {
+export class Sparkcentral {
     VERSION = VERSION
 
     on() {
@@ -129,7 +116,6 @@ export class BRAND {
         };
 
         if (/lebo|awle|pide|obo|rawli/i.test(navigator.userAgent)) {
-            renderLink();
             observable.trigger('ready');
             return Promise.resolve();
         } else if (/PhantomJS/.test(navigator.userAgent) && process.env.NODE_ENV !== 'test') {

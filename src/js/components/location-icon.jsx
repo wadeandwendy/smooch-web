@@ -10,7 +10,7 @@ export class LocationIconComponent extends Component {
         const {settings: {accentColor}} = this.props;
         const backgroundFill = `#${accentColor}`;
 
-        return <svg className='CLASS_PREFIX-location-icon'
+        return <svg className='spark-location-icon'
                     fill={ backgroundFill }
                     viewBox='0 0 127.9 127.9'>
                    <g>

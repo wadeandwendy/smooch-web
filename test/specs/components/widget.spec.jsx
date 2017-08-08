@@ -113,8 +113,8 @@ describe('Widget Component', () => {
             component = wrapComponentWithStore(Widget, null, mockedStore);
         });
 
-        it('should have a CLASS_PREFIX-close class', () => {
-            findRenderedDOMComponentsWithId(component, 'CLASS_PREFIX-container').className.indexOf('CLASS_PREFIX-close').should.be.gt(-1);
+        it('should have a spark-close class', () => {
+            findRenderedDOMComponentsWithId(component, 'spark-container').className.indexOf('spark-close').should.be.gt(-1);
         });
     });
 
@@ -128,8 +128,8 @@ describe('Widget Component', () => {
             component = wrapComponentWithStore(Widget, null, mockedStore);
         });
 
-        it('should have a CLASS_PREFIX-appear class', () => {
-            findRenderedDOMComponentsWithId(component, 'CLASS_PREFIX-container').className.indexOf('CLASS_PREFIX-appear').should.be.gt(-1);
+        it('should have a spark-appear class', () => {
+            findRenderedDOMComponentsWithId(component, 'spark-container').className.indexOf('spark-appear').should.be.gt(-1);
         });
     });
 

@@ -59,7 +59,7 @@ describe('Viber Channel Component', () => {
                 hasError: true
             }
         }, store);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-error-link').length.should.eql(1);
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-error-link').length.should.eql(1);
     });
 
     it('should render loading spinner', () => {

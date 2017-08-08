@@ -16,7 +16,7 @@ function getStoreState(state = {}) {
             settings: {
                 web: {
                     channels: {},
-                    isBRANDColorDark: true
+                    isSparkcentralColorDark: true
                 }
             }
         },

@@ -73,11 +73,11 @@ describe('Header Component', () => {
         });
 
         it('should contain the back button', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-back-handle').length.should.be.eq(1);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-back-handle').length.should.be.eq(1);
         });
 
         it('should not contain the settings button', () => {
-            scryRenderedDOMComponentsWithId(header, 'CLASS_PREFIX-settings-handle').length.should.be.eq(0);
+            scryRenderedDOMComponentsWithId(header, 'spark-settings-handle').length.should.be.eq(0);
         });
 
         it('should call the toggleWidget action on header click', () => {
@@ -86,11 +86,11 @@ describe('Header Component', () => {
         });
 
         it('should not contain the show handle', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-show-handle').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-show-handle').length.should.be.eq(0);
         });
 
         it('should contain the close handle', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-close-handle').length.should.be.eq(1);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-close-handle').length.should.be.eq(1);
         });
     });
 
@@ -112,15 +112,15 @@ describe('Header Component', () => {
         });
 
         it('should not contain the back button', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-back-handle').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-back-handle').length.should.be.eq(0);
         });
 
         it('should contain the settings button', () => {
-            scryRenderedDOMComponentsWithId(header, 'CLASS_PREFIX-settings-handle').length.should.be.eq(1);
+            scryRenderedDOMComponentsWithId(header, 'spark-settings-handle').length.should.be.eq(1);
         });
 
         it('should call the openSettings action on settings button click', () => {
-            const settingsButton = findRenderedDOMComponentsWithId(header, 'CLASS_PREFIX-settings-handle');
+            const settingsButton = findRenderedDOMComponentsWithId(header, 'spark-settings-handle');
             TestUtils.Simulate.click(settingsButton);
             HeaderComponent.prototype.showSettings.should.have.been.calledOnce;
         });
@@ -131,11 +131,11 @@ describe('Header Component', () => {
         });
 
         it('should not contain the show handle', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-show-handle').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-show-handle').length.should.be.eq(0);
         });
 
         it('should not contain the close handle', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(header, 'CLASS_PREFIX-close-handle').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(header, 'spark-close-handle').length.should.be.eq(0);
         });
     });
 });

@@ -1,15 +1,15 @@
 {
-  "name": "DOMAIN",
-  "description": "BRAND powered web messaging",
+  "name": "sparkcentral",
+  "description": "Sparkcentral powered web messaging",
   "analyze": false,
   "version": "3.15.0",
   "keywords": [
-    "DOMAIN",
+    "sparkcentral",
     "javascript",
     "sdk"
   ],
   "author": {
-    "name": "BRAND"
+    "name": "Sparkcentral"
   },
   "scripts": {
     "test": "karma start karma.conf.js --no-single-run --reporters spec --browsers PhantomJS,Chrome",

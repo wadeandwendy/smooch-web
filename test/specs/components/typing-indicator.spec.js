@@ -29,9 +29,9 @@ describe('TypingIndicator Component', () => {
     it('should render only indicator if no avatar', () => {
         const mockedStore = createMockedStore(sandbox, getStoreState());
         const component = wrapComponentWithStore(TypingIndicator, null, mockedStore);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator').length.should.eq(1);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar-placeholder').length.should.eq(1);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar').length.should.eq(0);
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator').length.should.eq(1);
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator-avatar-placeholder').length.should.eq(1);
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator-avatar').length.should.eq(0);
     });
 
     it('should render avatar if present', () => {
@@ -41,9 +41,9 @@ describe('TypingIndicator Component', () => {
             }
         }));
         const component = wrapComponentWithStore(TypingIndicator, null, mockedStore);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator').length.should.eq(1);
-        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar-placeholder').length.should.eq(0);
-        const node = TestUtils.findRenderedDOMComponentWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar');
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator').length.should.eq(1);
+        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator-avatar-placeholder').length.should.eq(0);
+        const node = TestUtils.findRenderedDOMComponentWithClass(component, 'spark-typing-indicator-avatar');
         expect(node).to.exist;
         node.src.should.eq('http://some-url/');
     });
@@ -60,14 +60,14 @@ describe('TypingIndicator Component', () => {
             describe(`is ${firstInGroup ? '' : ' not'} first in group ${avatarUrl ? 'with' : 'without'} avatar`, () => {
                 it(`should ${firstInGroup ? '' : 'not'} render a name`, () => {
                     const component = wrapComponentWithStore(TypingIndicator, null, mockedStore);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator').length.should.eq(1);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar-placeholder').length.should.eq(avatarUrl ? 0 : 1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator').length.should.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator-avatar-placeholder').length.should.eq(avatarUrl ? 0 : 1);
                     if (avatarUrl) {
-                        const node = TestUtils.findRenderedDOMComponentWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar');
+                        const node = TestUtils.findRenderedDOMComponentWithClass(component, 'spark-typing-indicator-avatar');
                         expect(node).to.exist;
                         node.src.should.eq(avatarUrl);
                     } else {
-                        TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-typing-indicator-avatar').length.should.eq(0);
+                        TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-typing-indicator-avatar').length.should.eq(0);
                     }
                 });
             });

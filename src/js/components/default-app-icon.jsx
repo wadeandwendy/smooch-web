@@ -9,9 +9,9 @@ export class DefaultAppIconComponent extends Component {
     };
 
     render() {
-        const {settings: {brandColor, isBRANDColorDark}} = this.props;
+        const {settings: {brandColor, isSparkcentralColorDark}} = this.props;
         const backgroundFill = `#${brandColor}`;
-        const businessPathFill = isBRANDColorDark ? 'transparent' : SK_DARK_CONTRAST;
+        const businessPathFill = isSparkcentralColorDark ? 'transparent' : SK_DARK_CONTRAST;
 
         return <svg className='app-icon'
                     viewBox='0 0 80 80'

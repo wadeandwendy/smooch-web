@@ -22,7 +22,7 @@ import { disableAnimation } from '../actions/app-state-actions';
 
 export class WidgetComponent extends Component {
     static propTypes = {
-        DOMAINId: PropTypes.string,
+        sparkcentralId: PropTypes.string,
         app: PropTypes.object.isRequired,
         settings: PropTypes.object.isRequired,
         ui: PropTypes.object.isRequired,
@@ -60,49 +60,49 @@ export class WidgetComponent extends Component {
     };
 
     render() {
-        const {appState, settings, DOMAINId} = this.props;
-        const {displayStyle, isBRANDColorDark, isAccentColorDark, isLinkColorDark} = settings;
+        const {appState, settings, sparkcentralId} = this.props;
+        const {displayStyle, isSparkcentralColorDark, isAccentColorDark, isLinkColorDark} = settings;
 
         const settingsComponent = appState.settingsVisible ? <Settings /> : null;
 
         // if no user set in store or the app has no channels,
         // no need to render the channel page manager
-        const channelsComponent = DOMAINId && hasChannels(settings) ? <Channel /> : null;
+        const channelsComponent = sparkcentralId && hasChannels(settings) ? <Channel /> : null;
 
         const footer = appState.settingsVisible ? null : <ChatInput ref='input' />;
 
         const classNames = [
-            `CLASS_PREFIX-${displayStyle}-display`
+            `spark-${displayStyle}-display`
         ];
 
         if (appState.embedded) {
-            classNames.push('CLASS_PREFIX-embedded');
+            classNames.push('spark-embedded');
         } else {
             if (appState.widgetState === WIDGET_STATE.OPENED) {
-                classNames.push('CLASS_PREFIX-appear');
+                classNames.push('spark-appear');
             } else if (appState.widgetState === WIDGET_STATE.CLOSED) {
-                classNames.push('CLASS_PREFIX-close');
+                classNames.push('spark-close');
             } else {
                 // state is WIDGET_STATE.INIT
-                classNames.push('CLASS_PREFIX-init');
+                classNames.push('spark-init');
             }
         }
 
         if (isMobile.apple.device) {
-            classNames.push('CLASS_PREFIX-ios-device');
+            classNames.push('spark-ios-device');
         }
 
         if (appState.showAnimation) {
-            classNames.push('CLASS_PREFIX-animation');
+            classNames.push('spark-animation');
         }
 
         const notification = appState.errorNotificationMessage ?
             <ErrorNotification message={ appState.errorNotificationMessage } /> : null;
 
         const wrapperClassNames = [
-            `CLASS_PREFIX-branding-color-${isBRANDColorDark ? 'dark' : 'light'}`,
-            `CLASS_PREFIX-accent-color-${isAccentColorDark ? 'dark' : 'light'}`,
-            `CLASS_PREFIX-link-color-${isLinkColorDark ? 'dark' : 'light'}`
+            `spark-branding-color-${isSparkcentralColorDark ? 'dark' : 'light'}`,
+            `spark-accent-color-${isAccentColorDark ? 'dark' : 'light'}`,
+            `spark-link-color-${isLinkColorDark ? 'dark' : 'light'}`
         ];
 
         let messengerButton;
@@ -112,17 +112,17 @@ export class WidgetComponent extends Component {
         }
 
         return <div>
-                   <div id='CLASS_PREFIX-container'
+                   <div id='spark-container'
                         className={ classNames.join(' ') }
                         onTouchStart={ this.onTouchStart }
                         onClick={ this.onClick }>
                        <MessageIndicator />
-                       <div id='CLASS_PREFIX-wrapper'
+                       <div id='spark-wrapper'
                             className={ wrapperClassNames.join(' ') }>
                            <Header />
                            <ReactCSSTransitionGroup component='div'
-                                                    className='CLASS_PREFIX-notification-container'
-                                                    transitionName='CLASS_PREFIX-notification'
+                                                    className='spark-notification-container'
+                                                    transitionName='spark-notification'
                                                     transitionAppear={ true }
                                                     transitionAppearTimeout={ 500 }
                                                     transitionEnterTimeout={ 500 }
@@ -161,6 +161,6 @@ export const Widget = connect(({appState: {settingsVisible, widgetState, errorNo
         app,
         settings: app.settings.web,
         ui,
-        DOMAINId: user._id
+        sparkcentralId: user._id
     };
 })(WidgetComponent);

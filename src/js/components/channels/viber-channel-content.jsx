@@ -23,7 +23,7 @@ class ViberChannelContentComponent extends Component {
         }
 
         if (channelState.hasError) {
-            return <a className={ 'CLASS_PREFIX-error-link' }
+            return <a className={ 'spark-error-link' }
                       onClick={ fetchViberQRCode }>
                        { text.viberQRCodeError }
                    </a>;

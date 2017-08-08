@@ -132,7 +132,7 @@ export class ActionComponent extends Component {
             const stripeAccount = stripe;
             if (state === 'offered') {
                 return <StripeCheckout componentClass='div'
-                                       className='CLASS_PREFIX-action'
+                                       className='spark-action'
                                        token={ this.onStripeToken }
                                        stripeKey={ stripeIntegration.publicKey }
                                        email={ user.email }
@@ -141,7 +141,7 @@ export class ActionComponent extends Component {
                                        name={ stripeAccount.appName }
                                        image={ stripeAccount.iconUrl }
                                        closed={ this.onStripeClose }>
-                           <a className='btn btn-CLASS_PREFIX-primary'
+                           <a className='btn btn-spark-primary'
                               onClick={ this.onStripeClick }
                               style={ style }>
                                { text }
@@ -156,8 +156,8 @@ export class ActionComponent extends Component {
                     style = {};
                 }
 
-                return <div className='CLASS_PREFIX-action'>
-                           <div className={ `btn btn-CLASS_PREFIX-action-${state}` }
+                return <div className='spark-action'>
+                           <div className={ `btn btn-spark-action-${state}` }
                                 style={ style }>
                                { buttonText }
                            </div>
@@ -169,8 +169,8 @@ export class ActionComponent extends Component {
                 <LoadingComponent /> :
                 text;
 
-            return <div className='CLASS_PREFIX-action'>
-                       <a className='btn btn-CLASS_PREFIX-primary'
+            return <div className='spark-action'>
+                       <a className='btn btn-spark-primary'
                           style={ style }
                           onClick={ !isProcessing && this.onPostbackClick }>
                            { buttonText }
@@ -179,8 +179,8 @@ export class ActionComponent extends Component {
         } else if (type === 'link' || (type === 'buy' && !stripeIntegration)) {
             const isJavascript = uri.startsWith('javascript:');
 
-            return <div className='CLASS_PREFIX-action'>
-                       <a className='btn btn-CLASS_PREFIX-primary'
+            return <div className='spark-action'>
+                       <a className='btn btn-spark-primary'
                           href={ uri }
                           target={ isJavascript ? '_self' : '_blank' }
                           style={ style }>

@@ -1,10 +1,10 @@
-.CLASS_PREFIX-notification-container {
+.spark-notification-container {
     box-shadow: 0 1px 3px rgba(0, 0, 0, .1);
     position: absolute;
     width: 100%;
     z-index: 1;
 
-    .CLASS_PREFIX-notification {
+    .spark-notification {
         overflow: hidden;
         width: 100%;
 
@@ -13,9 +13,9 @@
         p {
             margin: 18px 18px;
             a {
-                color: @CLASS_PREFIX-blue;
+                color: @spark-blue;
             }
-            .CLASS_PREFIX-notification-close {
+            .spark-notification-close {
                 font-size: 20px;
                 font-weight: 600;
 
@@ -31,33 +31,33 @@
 
                 text-decoration: none;
 
-                color: @CLASS_PREFIX-dark-grey;
+                color: @spark-dark-grey;
             }
         }
 
-        &.CLASS_PREFIX-notification-error {
+        &.spark-notification-error {
             background-color: @brand-danger;
             color: white;
-            .CLASS_PREFIX-notification-close {
+            .spark-notification-close {
                 color: white;
             }
         }
     }
 
-    .CLASS_PREFIX-notification-enter {
+    .spark-notification-enter {
         height: 0;
     }
 
-    .CLASS_PREFIX-notification-enter-active {
+    .spark-notification-enter-active {
         .transition(height 500ms);
         height: @notification-height;
     }
 
-    .CLASS_PREFIX-notification-leave {
+    .spark-notification-leave {
         height: @notification-height;
     }
 
-    .CLASS_PREFIX-notification-leave-active {
+    .spark-notification-leave-active {
         .transition(height 500ms);
         height: 0;
     }

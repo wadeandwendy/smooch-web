@@ -31,7 +31,7 @@ export class MessengerButtonComponent extends Component {
 
     render() {
         const {unreadCount, shown, settings} = this.props;
-        const {brandColor, isBRANDColorDark, buttonIconUrl} = settings;
+        const {brandColor, isSparkcentralColorDark, buttonIconUrl} = settings;
 
         const style = {
             backgroundColor: `#${brandColor}`
@@ -41,11 +41,11 @@ export class MessengerButtonComponent extends Component {
 
         if (buttonIconUrl) {
             content = <div className='messenger-button-icon'>
-                          <img alt='BRAND Messenger Button'
+                          <img alt='Sparkcentral Messenger Button'
                                src={ buttonIconUrl } />
                       </div>;
         } else {
-            content = <DefaultButtonIcon isBRANDColorDark={ isBRANDColorDark } />;
+            content = <DefaultButtonIcon isSparkcentralColorDark={ isSparkcentralColorDark } />;
         }
 
         let unreadBadge;
@@ -55,7 +55,7 @@ export class MessengerButtonComponent extends Component {
                           </div>;
         }
 
-        return <div id='CLASS_PREFIX-messenger-button'
+        return <div id='spark-messenger-button'
                     className={ `messenger-button-${shown ? 'shown' : 'hidden'}` }
                     style={ style }
                     onClick={ this.onClick }>

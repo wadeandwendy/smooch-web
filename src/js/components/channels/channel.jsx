@@ -9,14 +9,14 @@ export class ChannelComponent extends Component {
         appChannels: PropTypes.array.isRequired,
         channelStates: PropTypes.object.isRequired,
         visibleChannelType: PropTypes.string,
-        DOMAINId: PropTypes.string,
+        sparkcentralId: PropTypes.string,
         clients: PropTypes.array
     };
 
     render() {
-        const {appChannels, visibleChannelType, DOMAINId, clients, pendingClients, channelStates} = this.props;
+        const {appChannels, visibleChannelType, sparkcentralId, clients, pendingClients, channelStates} = this.props;
 
-        if (!DOMAINId) {
+        if (!sparkcentralId) {
             return null;
         }
 
@@ -39,7 +39,7 @@ export class ChannelComponent extends Component {
                        <details.Component {...channel}
                                           channelState={ channelStates[channel.type] }
                                           getContent={ details.getContent }
-                                          DOMAINId={ DOMAINId }
+                                          sparkcentralId={ sparkcentralId }
                                           linked={ !!client } />
                    </ChannelPage>;
         });
@@ -55,7 +55,7 @@ export const Channel = connect(({appState, app, user, integrations}) => {
         visibleChannelType: appState.visibleChannelType,
         appChannels: app.integrations,
         channelStates: integrations,
-        DOMAINId: user._id,
+        sparkcentralId: user._id,
         clients: user.clients,
         pendingClients: user.pendingClients
     };

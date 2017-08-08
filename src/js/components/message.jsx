@@ -81,12 +81,12 @@ class Message extends Component {
             lastItem = 'location'
         }
 
-        const avatarClass = hasImage ? ['CLASS_PREFIX-msg-avatar', 'CLASS_PREFIX-msg-avatar-img'] : ['CLASS_PREFIX-msg-avatar'];
-        const avatarPlaceHolder = isAppUser ? null : (<div className='CLASS_PREFIX-msg-avatar-placeholder' />);
-        const containerClasses = ['CLASS_PREFIX-msg'];
+        const avatarClass = hasImage ? ['spark-msg-avatar', 'spark-msg-avatar-img'] : ['spark-msg-avatar'];
+        const avatarPlaceHolder = isAppUser ? null : (<div className='spark-msg-avatar-placeholder' />);
+        const containerClasses = ['spark-msg'];
 
         if (hasImage || actions.length > 0) {
-            containerClasses.push('CLASS_PREFIX-msg-image');
+            containerClasses.push('spark-msg-image');
         }
 
         const actionList = actions.map((action) => {
@@ -100,10 +100,10 @@ class Message extends Component {
                  className={ avatarClass.join(' ') }
                  src={ avatarUrl } />;
 
-        const textClasses = ['CLASS_PREFIX-message-item', 'CLASS_PREFIX-message-text'];
+        const textClasses = ['spark-message-item', 'spark-message-text'];
 
         if (lastItem === 'text') {
-            textClasses.push('CLASS_PREFIX-last-item');
+            textClasses.push('spark-last-item');
         }
 
         const textPart = (hasText || hasFile) && <TextMessage {...this.props}
@@ -118,67 +118,67 @@ class Message extends Component {
             }
         }
 
-        const rowClass = ['CLASS_PREFIX-row'];
+        const rowClass = ['spark-row'];
 
         if (isAppUser) {
-            rowClass.push('CLASS_PREFIX-right-row');
+            rowClass.push('spark-right-row');
         } else {
-            rowClass.push('CLASS_PREFIX-left-row');
+            rowClass.push('spark-left-row');
         }
 
         if (firstInGroup) {
             if (isAppUser) {
-                rowClass.push('CLASS_PREFIX-row-appuser-first');
+                rowClass.push('spark-row-appuser-first');
             } else {
-                rowClass.push('CLASS_PREFIX-row-appmaker-first');
+                rowClass.push('spark-row-appmaker-first');
             }
         }
 
         if (lastInGroup) {
             if (isAppUser) {
-                rowClass.push('CLASS_PREFIX-row-appuser-last');
+                rowClass.push('spark-row-appuser-last');
             } else {
-                rowClass.push('CLASS_PREFIX-row-appmaker-last');
+                rowClass.push('spark-row-appmaker-last');
             }
         }
 
         if (!firstInGroup && !lastInGroup) {
             if (isAppUser) {
-                rowClass.push('CLASS_PREFIX-row-appuser-middle');
+                rowClass.push('spark-row-appuser-middle');
             } else {
-                rowClass.push('CLASS_PREFIX-row-appmaker-middle');
+                rowClass.push('spark-row-appmaker-middle');
             }
         }
 
-        const fromName = <div className='CLASS_PREFIX-from'>
+        const fromName = <div className='spark-from'>
                              { isAppUser ? '' : name }
                          </div>;
 
-        const actionListClasses = ['CLASS_PREFIX-message-item'];
+        const actionListClasses = ['spark-message-item'];
 
         if (lastItem === 'actions') {
-            actionListClasses.push('CLASS_PREFIX-last-item');
+            actionListClasses.push('spark-last-item');
         }
 
         if ([SEND_STATUS.SENDING, SEND_STATUS.FAILED].includes(sendStatus)) {
-            containerClasses.push('CLASS_PREFIX-msg-unsent');
+            containerClasses.push('spark-msg-unsent');
         }
 
-        const clickToRetry = <div className='CLASS_PREFIX-retry'>
+        const clickToRetry = <div className='spark-retry'>
                                  { isMobile.any ? tapToRetryText : clickToRetryText }
                              </div>;
 
 
-        const locationClasses = ['CLASS_PREFIX-message-item'];
+        const locationClasses = ['spark-message-item'];
 
         if (lastItem === 'location') {
-            locationClasses.push('CLASS_PREFIX-last-item');
+            locationClasses.push('spark-last-item');
         }
 
         if (sendStatus === SEND_STATUS.SENDING) {
-            locationClasses.push('CLASS_PREFIX-message-location-loading');
+            locationClasses.push('spark-message-location-loading');
         } else {
-            locationClasses.push('CLASS_PREFIX-message-text');
+            locationClasses.push('spark-message-text');
         }
 
         let locationPart;
@@ -196,7 +196,7 @@ class Message extends Component {
         return <div className={ rowClass.join(' ') }>
                    { !isAppUser && firstInGroup ? fromName : null }
                    { lastInGroup ? avatar : avatarPlaceHolder }
-                   <div className='CLASS_PREFIX-msg-wrapper'>
+                   <div className='spark-msg-wrapper'>
                        <div className={ containerClasses.join(' ') }
                             style={ style }
                             ref='messageContent'
@@ -210,7 +210,7 @@ class Message extends Component {
                        </div>
                        { sendStatus === SEND_STATUS.FAILED ? clickToRetry : null }
                    </div>
-                   <div className='CLASS_PREFIX-clear'></div>
+                   <div className='spark-clear'></div>
                </div>;
     }
 }

@@ -1,4 +1,4 @@
-#CLASS_PREFIX-conversation {
+#spark-conversation {
     position: relative;
     padding: 0;
     height: @conversation-height;
@@ -11,7 +11,7 @@
         height: @conversation-height-mobile;
     }
 
-    .CLASS_PREFIX-intro-section {
+    .spark-intro-section {
         background-color: #F8F9FA;
         padding: @intro-padding @intro-padding @intro-padding-bottom @intro-padding;
         border-bottom: solid 1px #E6E6E6;
@@ -24,7 +24,7 @@
         }
 
         .intro-text {
-            color: @CLASS_PREFIX-base-text-color;
+            color: @spark-base-text-color;
             font-size: 13px;
             line-height: 1.3;
             margin-top: 8px;
@@ -44,7 +44,7 @@
         .available-channels {
             margin-top: 22px;
             text-align: center;
-            color: @CLASS_PREFIX-base-text-color;
+            color: @spark-base-text-color;
 
             .channel-icon {
                 cursor: pointer;
@@ -57,95 +57,95 @@
         }
     }
 
-    .CLASS_PREFIX-messages-container {
+    .spark-messages-container {
         position: absolute;
         bottom: 0;
         width: 100%;
         max-height: 100%;
     }
 
-    .CLASS_PREFIX-fetch-history {
+    .spark-fetch-history {
         width: 100%;
         text-align: center;
         font-style: italic;
-        color: @CLASS_PREFIX-medium-grey;
+        color: @spark-medium-grey;
         padding-top: 24px;
         padding-bottom: 5px;
     }
 
-    .CLASS_PREFIX-messages {
+    .spark-messages {
         padding: 0 15px 0 5px;
     }
 
-    .CLASS_PREFIX-row {
+    .spark-row {
         clear: both;
         padding-bottom: 0px;
         padding-top: 2px;
-        &.CLASS_PREFIX-row-appmaker-first:not(.CLASS_PREFIX-row-appmaker-last) {
-            .CLASS_PREFIX-msg-wrapper {
-                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+        &.spark-row-appmaker-first:not(.spark-row-appmaker-last) {
+            .spark-msg-wrapper {
+                .spark-msg, .spark-msg-image {
                     border-bottom-left-radius: 2px;
                 }
             }
         }
-        &.CLASS_PREFIX-row-appmaker-middle {
-            .CLASS_PREFIX-msg-wrapper {
-                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+        &.spark-row-appmaker-middle {
+            .spark-msg-wrapper {
+                .spark-msg, .spark-msg-image {
                     border-bottom-left-radius: 2px;
                     border-top-left-radius: 2px;
                 }
             }
         }
-        &.CLASS_PREFIX-row-appmaker-last {
+        &.spark-row-appmaker-last {
             margin-bottom: 10px;
 
-            &:not(.CLASS_PREFIX-row-appmaker-first) {
-              .CLASS_PREFIX-msg-wrapper {
-                  .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+            &:not(.spark-row-appmaker-first) {
+              .spark-msg-wrapper {
+                  .spark-msg, .spark-msg-image {
                       border-top-left-radius: 2px;
                   }
               }
             }
         }
 
-        &.CLASS_PREFIX-row-appuser-first:not(.CLASS_PREFIX-row-appuser-last) {
-            .CLASS_PREFIX-msg-wrapper {
-                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+        &.spark-row-appuser-first:not(.spark-row-appuser-last) {
+            .spark-msg-wrapper {
+                .spark-msg, .spark-msg-image {
                     border-bottom-right-radius: 2px;
                 }
             }
         }
-        &.CLASS_PREFIX-row-appuser-middle {
-            .CLASS_PREFIX-msg-wrapper {
-                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+        &.spark-row-appuser-middle {
+            .spark-msg-wrapper {
+                .spark-msg, .spark-msg-image {
                     border-bottom-right-radius: 2px;
                     border-top-right-radius: 2px;
                 }
             }
         }
-        &.CLASS_PREFIX-row-appuser-last {
+        &.spark-row-appuser-last {
             margin-bottom: 10px;
 
-            &:not(.CLASS_PREFIX-row-appuser-first) {
-                .CLASS_PREFIX-msg-wrapper {
-                    .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+            &:not(.spark-row-appuser-first) {
+                .spark-msg-wrapper {
+                    .spark-msg, .spark-msg-image {
                         border-top-right-radius: 2px;
                     }
                 }
             }
         }
 
-        .CLASS_PREFIX-msg-wrapper {
+        .spark-msg-wrapper {
             max-width: 100%;
             position: relative;
 
-            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+            .spark-msg, .spark-msg-image {
                 font-size: @font-size-base;
                 overflow: hidden;
                 line-height: 1.25;
                 position: relative;
                 border-radius: 14px;
-                border-left-color: @CLASS_PREFIX-blue;
+                border-left-color: @spark-blue;
 
                 .transition(opacity 150ms);
 
@@ -192,11 +192,11 @@
                     .bounce1, .bounce2, .bounce3 {
                         height: 15px;
                         width: 15px;
-                        background-color: @CLASS_PREFIX-blue;
+                        background-color: @spark-blue;
                     }
                 }
             }
-            .CLASS_PREFIX-action {
+            .spark-action {
                 margin-bottom: 5px;
 
                 .btn {
@@ -214,30 +214,30 @@
                     margin-left: 8px;
                 }
             }
-            .CLASS_PREFIX-message-text {
+            .spark-message-text {
                 display: inline-block;
                 max-width: 204px;
             }
-            .CLASS_PREFIX-message-item {
+            .spark-message-item {
                 padding: 8px 13px 0;
                 line-height: 1.3;
             }
-            .CLASS_PREFIX-last-item {
+            .spark-last-item {
                 padding-bottom: 9px;
             }
-            .CLASS_PREFIX-message-location-loading {
+            .spark-message-location-loading {
                 padding: 0;
                 margin: 6px 30px;
 
-                .CLASS_PREFIX-fading-circle {
+                .spark-fading-circle {
                     width: 23px;
                     height: 23px;
                 }
             }
-            .CLASS_PREFIX-msg-unsent {
+            .spark-msg-unsent {
                 opacity: 0.3;
             }
-            .CLASS_PREFIX-retry {
+            .spark-retry {
                 float: right;
                 clear: right;
                 font-size: 13px;
@@ -245,13 +245,13 @@
                 line-height: 16px;
             }
         }
-        &.CLASS_PREFIX-left-row {
-            .CLASS_PREFIX-msg-wrapper {
+        &.spark-left-row {
+            .spark-msg-wrapper {
                 display: inline-block;
 
-                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
-                    background-color: @CLASS_PREFIX-light-grey;
-                    color: @CLASS_PREFIX-darker-grey;
+                .spark-msg, .spark-msg-image {
+                    background-color: @spark-light-grey;
+                    color: @spark-darker-grey;
                     max-width: 200px;
 
                     &:after {
@@ -260,14 +260,14 @@
                         border-right-color: white;
                     }
                     a.link, a.link:visited {
-                        color: @CLASS_PREFIX-blue;
+                        color: @spark-blue;
                     }
                 }
             }
         }
-        &.CLASS_PREFIX-right-row {
-            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
-                background-color: @CLASS_PREFIX-blue;
+        &.spark-right-row {
+            .spark-msg, .spark-msg-image {
+                background-color: @spark-blue;
                 float: right;
                 color: white;
                 max-width: 204px;
@@ -282,7 +282,7 @@
                 }
             }
 
-            .CLASS_PREFIX-msg-image {
+            .spark-msg-image {
                 background-color: transparent;
             }
         }
@@ -290,13 +290,13 @@
             padding-bottom: 10px;
         }
     }
-    .CLASS_PREFIX-clear {
+    .spark-clear {
         clear: both;
     }
 
     .scrollbar-mixin();
 
-    .CLASS_PREFIX-logo {
+    .spark-logo {
         padding-bottom: 10px;
         margin-left: @logo-margin;
 
@@ -305,7 +305,7 @@
             color: #bbb;
             text-decoration: none;
         }
-        .CLASS_PREFIX-image {
+        .spark-image {
             position: relative;
             left: 2px;
             top: 3px;
@@ -313,11 +313,11 @@
             vertical-align: baseline;
         }
     }
-    .CLASS_PREFIX-from {
+    .spark-from {
         white-space: nowrap;
         top: -20px;
         font-size: 12px;
-        color: @CLASS_PREFIX-base-text-color;
+        color: @spark-base-text-color;
         padding-left: 12px;
         margin-bottom: 2px;
         margin-left: 45px;
@@ -330,7 +330,7 @@
         text-align: center;
 
         p {
-            color: @CLASS_PREFIX-medium-grey;
+            color: @spark-medium-grey;
         }
 
         .connect-notification-channels {
@@ -341,7 +341,7 @@
                 display: inline-block;
 
                 .channel-link {
-                    color: @CLASS_PREFIX-blue;
+                    color: @spark-blue;
                     display: inline-block;
                 }
             }
@@ -350,42 +350,42 @@
     }
 }
 
-.CLASS_PREFIX-accent-color-light {
-    #CLASS_PREFIX-conversation {
-        .CLASS_PREFIX-right-row {
-            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
-                color: @CLASS_PREFIX-darker-grey;
+.spark-accent-color-light {
+    #spark-conversation {
+        .spark-right-row {
+            .spark-msg, .spark-msg-image {
+                color: @spark-darker-grey;
 
                 a.link, a.link:visited {
-                    color: @CLASS_PREFIX-darker-grey;
+                    color: @spark-darker-grey;
                 }
             }
         }
     }
 }
 
-.CLASS_PREFIX-link-color-light {
-    #CLASS_PREFIX-conversation {
-        .CLASS_PREFIX-left-row {
+.spark-link-color-light {
+    #spark-conversation {
+        .spark-left-row {
             .btn {
-                color: @CLASS_PREFIX-darker-grey;
+                color: @spark-darker-grey;
             }
         }
     }
 }
 
-.CLASS_PREFIX-msg-avatar {
+.spark-msg-avatar {
     width: 31px;
     height: auto;
     border-radius: 50%;
     margin-right: 5px;
     display: inline-block;
     margin-left: 9px;
-    &.CLASS_PREFIX-msg-avatar-img {
+    &.spark-msg-avatar-img {
         margin-bottom: 0px;
     }
 }
-.CLASS_PREFIX-msg-avatar-placeholder {
+.spark-msg-avatar-placeholder {
     width: 35px;
     display: inline-block;
     margin-right: 10px;

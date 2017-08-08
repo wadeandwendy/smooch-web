@@ -66,7 +66,7 @@ export class EmailSettingsComponent extends Component {
                 <button ref='button'
                         disabled={ hasError }
                         type='button'
-                        className='btn btn-CLASS_PREFIX-primary'
+                        className='btn btn-spark-primary'
                         style={ style }
                         onClick={ this.save }>
                     { text.settingsSaveButtonText }

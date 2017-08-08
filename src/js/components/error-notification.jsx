@@ -16,8 +16,8 @@ export class ErrorNotificationComponent extends Component {
         const message = this.props.message;
 
         const classes = [
-            'CLASS_PREFIX-notification',
-            'CLASS_PREFIX-notification-error',
+            'spark-notification',
+            'spark-notification-error',
             message && (message.length > 50) && 'long-text'
         ]
             .filter((value) => value)
@@ -32,7 +32,7 @@ export class ErrorNotificationComponent extends Component {
                           dangerouslySetInnerHTML={ createMarkup(message) }></span>
                     <a style={ linkStyle }
                        onClick={ preventDefault }
-                       className='CLASS_PREFIX-notification-close'>&times;</a>
+                       className='spark-notification-close'>&times;</a>
                 </p>
             </div>
             );

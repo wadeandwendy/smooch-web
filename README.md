@@ -1,19 +1,17 @@
-# [BRAND Web Messenger](https://smooch.io)
+# [Sparkcentral Web Messenger](https://smooch.io)
 
-  [![Circle CI](https://circleci.com/gh/DOMAIN/DOMAIN-js.svg?style=svg)](https://circleci.com/gh/DOMAIN/DOMAIN-js)
-  [![npm version](https://badge.fury.io/js/DOMAIN.svg)](http://badge.fury.io/js/DOMAIN)
-  [![Bower version](https://badge.fury.io/bo/DOMAIN.svg)](http://badge.fury.io/bo/DOMAIN)
+  [![Circle CI](https://circleci.com/gh/sparkcentral/sparkcentral-js.svg?style=svg)](https://circleci.com/gh/sparkcentral/sparkcentral-js)
+  [![npm version](https://badge.fury.io/js/sparkcentral.svg)](http://badge.fury.io/js/sparkcentral)
+  [![Bower version](https://badge.fury.io/bo/sparkcentral.svg)](http://badge.fury.io/bo/sparkcentral)
 
-BRAND is the best way to have personal, rich conversations with people on your website or customers on any device. Our features, integrations and developer-friendly APIs empower companies to connect with their customers in a whole new way.
+Sparkcentral is the best way to have personal, rich conversations with people on your website or customers on any device. Our features, integrations and developer-friendly APIs empower companies to connect with their customers in a whole new way.
 
-The BRAND Web Messenger will add [live web messaging](https://smooch.io/live-web-chat/) to your website or web app. Customers will be able to talk to you from your website, while you manage conversations using your favorite business systems.
+The Sparkcentral Web Messenger will add [live web messaging](https://smooch.io/live-web-chat/) to your website or web app. Customers will be able to talk to you from your website, while you manage conversations using your favorite business systems.
 
 - Let your customers talk to you the way they want by seamlessly [moving web chat conversations](https://smooch.io/cross-channel-messaging/) to any messaging app.
 - Sync conversations across every device and channel your customers use.
 - Build better relationships with messaging that feels and looks tailored to your website.
 - Delight your customers with the most engaging conversational experience using [rich messaging](https://smooch.io/rich-messaging/).
-- Maximize development productivity with a single codebase across platforms and [add more channels](https://smooch.io/cross-channel-messaging/) anytime.
-- Bring every conversation into your existing business systems. No new tool to learn. [See all integrations](https://smooch.io/integrations/).
 
 ## Usage
 
@@ -22,7 +20,7 @@ The BRAND Web Messenger will add [live web messaging](https://smooch.io/live-web
 Add the following code towards the end of the `body` section on your page. Placing it at the end allows the rest of the page to load first.
 
 ```html
-<script src="https://cdn.smooch.io/DOMAIN.min.js"></script>
+<script src="http://YOUR-CDN.com/sparkcentral.min.js"></script>
 ```
 
 
@@ -30,55 +28,8 @@ Initialize the plugin using this code snippet
 
 ```html
 <script>
-    BRAND.init({appToken: 'your_app_token'});
+    Sparkcentral.init({appToken: 'your_app_token'});
 </script>
-```
-
-### Browserify and Webpack
-
-Install from npm
-
-```
-npm install --save DOMAIN
-
-// The library also has peer dependencies. If you don't already have them in your project, go ahead and install them too
-
-npm install --save babel-polyfill@6.9 babel-runtime@6.9 react@15 react-dom@15
-```
-
-Require and init
-
-```javascript
-var BRAND = require('DOMAIN');
-
-BRAND.init({appToken: 'your_app_token'});
-```
-
-#### Notes about Webpack
-If you are building an isomorphic app, make sure you init the widget in client code only. It currently won't work on the server side. You'll also need to add the following to your plugins since `iconv-loader` doesn't work very well with webpack :
-
-```javascript
-new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop')
-```
-
-You will need to install `node-noop` in your project.
-See https://github.com/andris9/encoding/issues/16
-
-#### Notes about Angular 2
-Some users reported that including the BRAND Web Messenger script in their Angular 2 app would cause some problems. The [workaround](https://github.com/DOMAIN/DOMAIN-js/issues/404#issuecomment-257768495) for that is to add it after all your scripts.
-
-### Bower
-
-Install from bower
-
-```
-bower install DOMAIN
-```
-
-Include in JS using preferred method and init
-
-```javascript
-BRAND.init({appToken: 'your_app_token'});
 ```
 
 ## API
@@ -86,7 +37,7 @@ BRAND.init({appToken: 'your_app_token'});
 ### Individual functions
 
 #### init(options)
-Initializes the BRAND widget in the web page using the specified options. It returns a promise that will resolve when the widget is ready.
+Initializes the Sparkcentral widget in the web page using the specified options. It returns a promise that will resolve when the widget is ready.
 
 ##### Options
 
@@ -99,14 +50,14 @@ Initializes the BRAND widget in the web page using the specified options. It ret
 | jwt | Yes | - | Token to authenticate your communication with the server (see http://docs.smooch.io/javascript/#authenticating-users-optional)
 | userId | Yes | - | User's id |
 | properties | Yes | - | An object with all properties you want to set on your user |
-| emailCaptureEnabled | Yes | `false` | *Deprecated* won't be supported in 4.x - Enables prompt for email after the first user's message. You can retrieve that email in Slack using `/sk !profile`. Forced to false if other messaging channels are enabled in your BRAND app |
+| emailCaptureEnabled | Yes | `false` | *Deprecated* won't be supported in 4.x - Enables prompt for email after the first user's message. You can retrieve that email in Slack using `/sk !profile`. Forced to false if other messaging channels are enabled in your Sparkcentral app |
 | soundNotificationEnabled | Yes | `true` | Enables the sound notification for new messages |
 | imageUploadEnabled | Yes | `true` | Enables the image upload feature. |
 | embedded | Yes | False | Tells the widget it will be embedded. (see Embedded section below) |
 | customText | Yes | See the example below | Strings used in the widget UI. You can use these to either customize the text or translate it. If something is between `{}`, it's a variable and needs to stay in your customized text if you want to use it. |
 
 ```javascript
-var skPromise = BRAND.init({
+var sparkPromise = Sparkcentral.init({
     appToken: 'your_app_token',
     givenName: 'Cool',
     surname: 'Person',
@@ -177,13 +128,13 @@ var skPromise = BRAND.init({
 });
 
 
-skPromise.then(function() {
+sparkPromise.then(function() {
     // do something
 });
 
 // pass it around...
 
-skPromise.then(function() {
+sparkPromise.then(function() {
     //do something else
 });
 
@@ -195,36 +146,36 @@ skPromise.then(function() {
 Opens the conversation widget (noop when embedded)
 
 ```javascript
-BRAND.open();
+Sparkcentral.open();
 ```
 
 #### close()
 Closes the conversation widget (noop when embedded)
 
 ```javascript
-BRAND.close();
+Sparkcentral.close();
 ```
 
 #### isOpened()
 Tells if the widget is currently opened or closed.
 
 ```javascript
-BRAND.isOpened();
+Sparkcentral.isOpened();
 ```
 
 #### login(userId [, jwt] [, attributes])
 Logs a user in the widget, retrieving the conversation that user already had on other browsers and/or devices. This will destroy and reinitialize the widget with the user's data. Note that you don't need to call this after `init`, it's already done internally. This returns a promise that resolves when the widget is ready again.
 ```
-BRAND.login('some-id');
+Sparkcentral.login('some-id');
 
 // in case you are using the jwt authentication
-BRAND.login('some-id', 'some-jwt');
+Sparkcentral.login('some-id', 'some-jwt');
 
 // in case you want to update user attributes at the same time
-BRAND.login('some-id', { email: 'my@new-email.com'});
+Sparkcentral.login('some-id', { email: 'my@new-email.com'});
 
 // in case you want to update user attributes at the same time and use jwt
-BRAND.login('some-id', 'some-jwt', { email: 'my@new-email.com'});
+Sparkcentral.login('some-id', 'some-jwt', { email: 'my@new-email.com'});
 
 ```
 
@@ -232,35 +183,35 @@ BRAND.login('some-id', 'some-jwt', { email: 'my@new-email.com'});
 Logs out the current user and reinitialize the widget with an anonymous user.This returns a promise that resolves when the widget is ready again.
 
 ```
-BRAND.logout();
+Sparkcentral.logout();
 ```
 
 #### destroy()
-Destroys the widget and makes it disappear. The widget has to be reinitialized with `init`  to be working again because it also clears up the app token from the widget. It will also unbind all listeners you might have with `BRAND.on`.
+Destroys the widget and makes it disappear. The widget has to be reinitialized with `init`  to be working again because it also clears up the app token from the widget. It will also unbind all listeners you might have with `Sparkcentral.on`.
 
 ```
-BRAND.destroy();
+Sparkcentral.destroy();
 ```
 
 #### sendMessage(message)
 Sends a message on the user's behalf
 
 ```javascript
-BRAND.sendMessage({
+Sparkcentral.sendMessage({
     type: 'text',
     text: 'hello'
 });
 
 // OR
 
-BRAND.sendMessage('hello');
+Sparkcentral.sendMessage('hello');
 ```
 
 #### updateUser(user)
 Updates user information
 
 ```javascript
-BRAND.updateUser({
+Sparkcentral.updateUser({
     givenName: 'Updated',
     surname: 'Name',
     email: 'updated@email.com',
@@ -274,55 +225,48 @@ BRAND.updateUser({
 Returns the userId of the current user.
 
 ```javascript
-BRAND.getUserId()
+Sparkcentral.getUserId()
 ```
 
 #### getConversation()
 Returns promise that resolves to conversation object, or rejects if none exists
 
 ```javascript
-BRAND.getConversation().then(conversation => ...);
-```
-
-#### track(eventName)
-Tracks an event for the current user.
-
-```javascript
-BRAND.track('item-in-cart');
+Sparkcentral.getConversation().then(conversation => ...);
 ```
 
 #### getCore()
-Returns an instance of [smooch-core](https://github.com/DOMAIN/smooch-core-js) to allow access to APIs the Web Messenger doesn't expose. For more information on how to use BRAND-Core, please visit the [documentation](http://docs.smooch.io/rest/?javascript).
+Returns an instance of [smooch-core](https://github.com/smooch/smooch-core-js) to allow access to APIs the Web Messenger doesn't expose. For more information on how to use smooch-core, please visit the [documentation](http://docs.smooch.io/rest/?javascript).
 
 ### Events
-If you want to make sure your events are triggered, try to bind them before calling `BRAND.init`.
+If you want to make sure your events are triggered, try to bind them before calling `Sparkcentral.init`.
 
-To bind an event, use `BRAND.on(<event name>, <handler>);`. To unbind events, you can either call `BRAND.off(<event name>, handler)` to remove one specific handler, call `BRAND.off(<event name>)` to remove all handlers for an event, or call `BRAND.off()` to unbind all handlers.
+To bind an event, use `Sparkcentral.on(<event name>, <handler>);`. To unbind events, you can either call `Sparkcentral.off(<event name>, handler)` to remove one specific handler, call `Sparkcentral.off(<event name>)` to remove all handlers for an event, or call `Sparkcentral.off()` to unbind all handlers.
 
 #### ready
 ```
 // This event triggers when init completes successfully... Be sure to bind before calling init!
-BRAND.on('ready', function(){
+Sparkcentral.on('ready', function(){
     console.log('the init has completed!');
 });
 
-BRAND.init(...);
+Sparkcentral.init(...);
 ```
 
 #### destroy
 ```
 // This event triggers when the widget is destroyed.
-BRAND.on('destroy', function(){
+Sparkcentral.on('destroy', function(){
     console.log('the widget is destroyed!');
 });
 
-BRAND.destroy();
+Sparkcentral.destroy();
 ```
 
 #### message:received
 ```
 // This event triggers when the user receives a message
-BRAND.on('message:received', function(message) {
+Sparkcentral.on('message:received', function(message) {
     console.log('the user received a message', message);
 });
 ```
@@ -330,7 +274,7 @@ BRAND.on('message:received', function(message) {
 #### message:sent
 ```
 // This event triggers when the user sends a message
-BRAND.on('message:sent', function(message) {
+Sparkcentral.on('message:sent', function(message) {
     console.log('the user sent a message', message);
 });
 ```
@@ -338,7 +282,7 @@ BRAND.on('message:sent', function(message) {
 #### message
 ```
 // This event triggers when a message was added to the conversation
-BRAND.on('message', function(message) {
+Sparkcentral.on('message', function(message) {
     console.log('a message was added to the conversation', message);
 });
 ```
@@ -346,7 +290,7 @@ BRAND.on('message', function(message) {
 #### unreadCount
 ```
 // This event triggers when the number of unread messages changes
-BRAND.on('unreadCount', function(unreadCount) {
+Sparkcentral.on('unreadCount', function(unreadCount) {
     console.log('the number of unread messages was updated', unreadCount);
 });
 ```
@@ -354,7 +298,7 @@ BRAND.on('unreadCount', function(unreadCount) {
 #### widget:opened
 ```
 // This event triggers when the widget is opened
-BRAND.on('widget:opened', function() {
+Sparkcentral.on('widget:opened', function() {
     console.log('Widget is opened!');
 });
 ```
@@ -362,13 +306,13 @@ BRAND.on('widget:opened', function() {
 #### widget:closed
 ```
 // This event triggers when the widget is closed
-BRAND.on('widget:closed', function() {
+Sparkcentral.on('widget:closed', function() {
     console.log('Widget is closed!');
 });
 ```
 
 ### Embedded mode
-As describe above, to activate the embedded mode, you need to pass `embedded: true` when calling `BRAND.init`. By doing so, you are disabling the auto-rendering mechanism and you will need to call `BRAND.render` manually. This method accepts a DOM element which will be used as the container where the widget will be rendered.
+As describe above, to activate the embedded mode, you need to pass `embedded: true` when calling `Sparkcentral.init`. By doing so, you are disabling the auto-rendering mechanism and you will need to call `Sparkcentral.render` manually. This method accepts a DOM element which will be used as the container where the widget will be rendered.
 
 The embedded widget will take full width and height of the container. You must give it a height, otherwise, the widget will collapse.
 
@@ -376,7 +320,7 @@ The embedded widget will take full width and height of the container. You must g
 
 ### Clone the git repo
 ```
-git clone https://github.com/DOMAIN/DOMAIN-js
+git clone https://github.com/sparkcentral/sparkcentral-js
 ```
 
 ### Install Node.js and run the following

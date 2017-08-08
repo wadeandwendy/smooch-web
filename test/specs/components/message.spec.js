@@ -75,7 +75,7 @@ describe('Message Component', () => {
             });
 
             it('should not contain any actions', () => {
-                TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-action').length.should.be.eq(0);
+                TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-action').length.should.be.eq(0);
             });
 
             it('should render a text message', () => {
@@ -98,21 +98,21 @@ describe('Message Component', () => {
         });
 
         it('should not have an avatar', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-msg-avatar').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-msg-avatar').length.should.be.eq(0);
         });
 
         it('should be on the right', () => {
-            const row = TestUtils.findRenderedDOMComponentWithClass(component, 'CLASS_PREFIX-row');
-            row.className.indexOf('CLASS_PREFIX-right-row').should.be.gte(0);
-            row.className.indexOf('CLASS_PREFIX-left-row').should.be.eq(-1);
+            const row = TestUtils.findRenderedDOMComponentWithClass(component, 'spark-row');
+            row.className.indexOf('spark-right-row').should.be.gte(0);
+            row.className.indexOf('spark-left-row').should.be.eq(-1);
         });
 
         it('should not put an author name on the message', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-from').length.should.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-from').length.should.eq(0);
         });
 
         it('should not contain any actions', () => {
-            TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-action').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-action').length.should.be.eq(0);
         });
 
         it('should render the text message', () => {
@@ -120,32 +120,32 @@ describe('Message Component', () => {
         });
 
         describe('with text sending in progress', () => {
-            it('should render the text message with CLASS_PREFIX-msg-unsent', () => {
+            it('should render the text message with spark-msg-unsent', () => {
                 const unsentProps = Object.assign(props, {
                     sendStatus: SEND_STATUS.SENDING
                 });
 
                 component = wrapComponentWithStore(MessageComponent, unsentProps, mockedStore);
-                TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-msg-unsent').length.should.be.eq(1);
+                TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-msg-unsent').length.should.be.eq(1);
             });
         });
 
         describe('with text sending failed', () => {
-            it('should render the text message with CLASS_PREFIX-msg-unsent and a retry prompt', () => {
+            it('should render the text message with spark-msg-unsent and a retry prompt', () => {
                 const unsentProps = Object.assign(props, {
                     sendStatus: SEND_STATUS.FAILED
                 });
 
                 component = wrapComponentWithStore(MessageComponent, unsentProps, mockedStore);
-                TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-msg-unsent').length.should.be.eq(1);
-                TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-retry').length.should.be.eq(1);
+                TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-msg-unsent').length.should.be.eq(1);
+                TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-retry').length.should.be.eq(1);
             });
         });
 
         describe('file message', () => {
             const props = Object.assign({}, defaultProps, {
                 role: 'appUser',
-                name: 'BRAND appUser',
+                name: 'Sparkcentral appUser',
                 type: 'file'
             });
 
@@ -161,7 +161,7 @@ describe('Message Component', () => {
         describe('location message', () => {
             const props = Object.assign({}, defaultProps, {
                 role: 'appUser',
-                name: 'BRAND appUser',
+                name: 'Sparkcentral appUser',
                 avatarUrl: 'http://some-image.url',
                 type: 'location'
             });
@@ -171,28 +171,28 @@ describe('Message Component', () => {
             });
 
             describe('with location sending in progress', () => {
-                it('should render a loading spinner CLASS_PREFIX-msg-unsent', () => {
+                it('should render a loading spinner spark-msg-unsent', () => {
                     const unsentProps = Object.assign(props, {
                         sendStatus: SEND_STATUS.SENDING,
                         text: null
                     });
 
                     component = wrapComponentWithStore(MessageComponent, unsentProps, mockedStore);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-msg-unsent').length.should.be.eq(1);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-message-location-loading').length.should.be.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-msg-unsent').length.should.be.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-message-location-loading').length.should.be.eq(1);
                     TestUtils.scryRenderedDOMComponentsWithClass(component, 'mockedText').length.should.eq(0);
                 });
             });
 
             describe('with location sending failed', () => {
-                it('should render the text message with CLASS_PREFIX-msg-unsent and a retry prompt', () => {
+                it('should render the text message with spark-msg-unsent and a retry prompt', () => {
                     const unsentProps = Object.assign(props, {
                         sendStatus: SEND_STATUS.FAILED
                     });
 
                     component = wrapComponentWithStore(MessageComponent, unsentProps, mockedStore);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-msg-unsent').length.should.be.eq(1);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-retry').length.should.be.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-msg-unsent').length.should.be.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-retry').length.should.be.eq(1);
                     TestUtils.scryRenderedDOMComponentsWithClass(component, 'mockedText').length.should.eq(1);
                 });
             });
@@ -207,7 +207,7 @@ describe('Message Component', () => {
         describe(`${role} without actions`, () => {
             const props = Object.assign({}, defaultProps, {
                 role: role,
-                name: 'BRAND',
+                name: 'Sparkcentral',
                 type: 'text',
                 avatarUrl: 'http://some-image.url'
             });
@@ -227,9 +227,9 @@ describe('Message Component', () => {
             });
 
             it('should be on the left', () => {
-                const row = TestUtils.findRenderedDOMComponentWithClass(component, 'CLASS_PREFIX-row');
-                row.className.indexOf('CLASS_PREFIX-left-row').should.be.gte(0);
-                row.className.indexOf('CLASS_PREFIX-right-row').should.be.eq(-1);
+                const row = TestUtils.findRenderedDOMComponentWithClass(component, 'spark-row');
+                row.className.indexOf('spark-left-row').should.be.gte(0);
+                row.className.indexOf('spark-right-row').should.be.eq(-1);
             });
 
             it('should not contain any actions', () => {
@@ -242,22 +242,22 @@ describe('Message Component', () => {
 
             describe('avatar', () => {
                 it('should not display on first message', () => {
-                    TestUtils.scryRenderedDOMComponentsWithClass(firstMessageComponent, 'CLASS_PREFIX-msg-avatar').length.should.eq(0);
+                    TestUtils.scryRenderedDOMComponentsWithClass(firstMessageComponent, 'spark-msg-avatar').length.should.eq(0);
                 });
 
                 it('should display on last message', () => {
-                    TestUtils.scryRenderedDOMComponentsWithClass(lastMessageComponent, 'CLASS_PREFIX-msg-avatar').length.should.eq(1);
+                    TestUtils.scryRenderedDOMComponentsWithClass(lastMessageComponent, 'spark-msg-avatar').length.should.eq(1);
                 });
             });
 
 
             describe('author name', () => {
                 it('should display on first message', () => {
-                    const fromNode = TestUtils.findRenderedDOMComponentWithClass(firstMessageComponent, 'CLASS_PREFIX-from');
+                    const fromNode = TestUtils.findRenderedDOMComponentWithClass(firstMessageComponent, 'spark-from');
                     fromNode.textContent.should.be.eq(props.name);
                 });
                 it('should not display on last message', () => {
-                    TestUtils.scryRenderedDOMComponentsWithClass(lastMessageComponent, 'CLASS_PREFIX-from').length.should.eq(0);
+                    TestUtils.scryRenderedDOMComponentsWithClass(lastMessageComponent, 'spark-from').length.should.eq(0);
                 });
             });
         });
@@ -265,7 +265,7 @@ describe('Message Component', () => {
         describe(`${role} with actions`, () => {
             const props = Object.assign({}, defaultProps, {
                 role: role,
-                name: `BRAND ${role}`,
+                name: `Sparkcentral ${role}`,
                 avatarUrl: 'http://some-image.url',
                 type: 'image',
                 mediaUrl: 'media-url',
@@ -288,9 +288,9 @@ describe('Message Component', () => {
             });
 
             it('should be on the left', () => {
-                const row = TestUtils.findRenderedDOMComponentWithClass(component, 'CLASS_PREFIX-row');
-                row.className.indexOf('CLASS_PREFIX-left-row').should.be.gte(0);
-                row.className.indexOf('CLASS_PREFIX-right-row').should.be.eq(-1);
+                const row = TestUtils.findRenderedDOMComponentWithClass(component, 'spark-row');
+                row.className.indexOf('spark-left-row').should.be.gte(0);
+                row.className.indexOf('spark-right-row').should.be.eq(-1);
             });
 
             it('should contain actions', () => {
@@ -310,7 +310,7 @@ describe('Message Component', () => {
         it('should not contain any reply or locationRequest actions', () => {
             const props = Object.assign({}, defaultProps, {
                 role: role,
-                name: `BRAND ${role}`,
+                name: `Sparkcentral ${role}`,
                 avatarUrl: 'http://some-image.url',
                 actions: [
                     {
@@ -328,7 +328,7 @@ describe('Message Component', () => {
             });
 
             component = wrapComponentWithStore(MessageComponent, props, mockedStore);
-            TestUtils.scryRenderedDOMComponentsWithClass(component, 'CLASS_PREFIX-action').length.should.be.eq(0);
+            TestUtils.scryRenderedDOMComponentsWithClass(component, 'spark-action').length.should.be.eq(0);
         });
     });
 

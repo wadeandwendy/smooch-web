@@ -1,10 +1,10 @@
 {
-  "name": "DOMAIN",
+  "name": "sparkcentral",
   "version": "3.15.0",
-  "description": "BRAND Javascript SDK",
-  "main": "dist/DOMAIN.js",
+  "description": "Sparkcentral Javascript SDK",
+  "main": "dist/sparkcentral.js",
   "keywords": [
-    "DOMAIN",
+    "sparkcentral",
     "javascript",
     "sdk"
   ],

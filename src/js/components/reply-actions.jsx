@@ -72,7 +72,7 @@ export class ReplyActionsComponent extends Component {
             };
 
             const locationIcon = <Location/>;
-            const imageIcon = <img className='CLASS_PREFIX-reply-action-icon'
+            const imageIcon = <img className='spark-reply-action-icon'
                                    alt='Icon'
                                    src={ iconUrl } />;
 
@@ -80,7 +80,7 @@ export class ReplyActionsComponent extends Component {
                 iconUrl ? imageIcon :
                     null;
 
-            return <button className='btn btn-CLASS_PREFIX-reply-action'
+            return <button className='btn btn-spark-reply-action'
                            style={ buttonStyle }
                            onClick={ onClick }
                            key={ index }>
@@ -88,7 +88,7 @@ export class ReplyActionsComponent extends Component {
                    </button>;
         });
 
-        return <div className='CLASS_PREFIX-reply-actions-container'>
+        return <div className='spark-reply-actions-container'>
                    { items }
                </div>;
     }

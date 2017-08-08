@@ -283,7 +283,7 @@ export class ConversationComponent extends Component {
         let retrieveHistory;
         if (hasMoreMessages) {
             if (isFetchingMoreMessages) {
-                retrieveHistory = <div className='CLASS_PREFIX-fetch-history'>
+                retrieveHistory = <div className='spark-fetch-history'>
                                       { fetchingHistory }
                                   </div>;
             } else {
@@ -292,7 +292,7 @@ export class ConversationComponent extends Component {
                     this.fetchHistory();
                 };
 
-                retrieveHistory = <div className='CLASS_PREFIX-fetch-history'>
+                retrieveHistory = <div className='spark-fetch-history'>
                                       <a href='#'
                                          onClick={ onClick }>
                                           { fetchHistory }
@@ -303,28 +303,25 @@ export class ConversationComponent extends Component {
 
         const introduction = hasMoreMessages ? null : <Introduction/>;
 
-        return <div id='CLASS_PREFIX-conversation'
+        return <div id='spark-conversation'
                     className={ errorNotificationMessage && 'notification-shown' }
                     ref='container'
                     onTouchMove={ this.onTouchMove }
                     onScroll={ isMobile.any ? this.onScroll : this.debounceOnScroll }>
                    { introduction }
                    <div ref='messagesContainer'
-                        className='CLASS_PREFIX-messages-container'
+                        className='spark-messages-container'
                         style={ messagesContainerStyle }>
                        { retrieveHistory }
                        <div ref='messages'
-                            className='CLASS_PREFIX-messages'>
+                            className='spark-messages'>
                            { messageItems }
                        </div>
-                       <div className='CLASS_PREFIX-logo'
+                       <div className='spark-logo'
                             ref='logo'
                             style={ logoStyle }>
-                           <a href='https://smooch.io/live-web-chat/?utm_source=widget'
-                              target='_blank'><span>Messaging by</span> <img className='CLASS_PREFIX-image'
-                                                                                                                                       src={ logo }
-                                                                                                                                       srcSet={ `${logo} 1x, ${logo2x} 2x` }
-                                                                                                                                       alt='smooch.io' /></a>
+                           <a href='https://sparkcentral.com/?utm_source=widget'
+                              target='_blank'><span>Messaging by Sparkcentral</span></a>
                        </div>
                    </div>
                </div>;

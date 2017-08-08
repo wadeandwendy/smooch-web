@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import { storage } from './storage';
 
 export function getDeviceId() {
-    const SK_STORAGE = 'CLASS_PREFIX_deviceid';
+    const SK_STORAGE = 'spark_deviceid';
     const deviceId = storage.getItem(SK_STORAGE) ||
     uuid.v4().replace(/-/g, '');
 

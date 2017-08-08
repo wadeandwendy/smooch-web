@@ -8,9 +8,9 @@
   <title>Embedded Conversation Demo</title>
   <script src="SCRIPT_URL"></script>
   <script>
-    /* global BRAND: false */
+    /* global Sparkcentral: false */
 
-    window.BRANDOptions = {
+    window.SparkcentralOptions = {
       serviceUrl: 'ROOT_URL',
       appToken: 'APP_TOKEN',
       givenName: 'GIVEN_NAME',
@@ -23,10 +23,10 @@
       embedded: true
     };
 
-    BRAND.on('message:received', function(message) {
+    Sparkcentral.on('message:received', function(message) {
       console.log('Message received', message);
     });
-    BRAND.on('message:sent', function(message) {
+    Sparkcentral.on('message:sent', function(message) {
       console.log('Message sent', message);
     });
   </script>
@@ -152,8 +152,8 @@
 
   </div>
   <script>
-    function renderBRAND() {
-      BRAND.render(document.getElementById('chat-container'));
+    function renderSparkcentral() {
+      Sparkcentral.render(document.getElementById('chat-container'));
     }
 
 
@@ -177,25 +177,25 @@
       var closeButton = document.getElementById('close');
       var renderButton = document.getElementById('rerender');
 
-      if (window.BRANDOptions.userId) {
-        userIdInput.value = window.BRANDOptions.userId;
+      if (window.SparkcentralOptions.userId) {
+        userIdInput.value = window.SparkcentralOptions.userId;
       }
 
-      if (window.BRANDOptions.jwt) {
-        jwtInput.value = window.BRANDOptions.jwt;
+      if (window.SparkcentralOptions.jwt) {
+        jwtInput.value = window.SparkcentralOptions.jwt;
       }
 
 
 
       formMain.addEventListener('submit', function(e) {
         e.preventDefault();
-        BRAND.login(userIdInput.value, jwtInput.value);
+        Sparkcentral.login(userIdInput.value, jwtInput.value);
       });
 
       formTrack.addEventListener('submit', function(e) {
         e.preventDefault();
         if (trackEventInput.value) {
-          BRAND.track(trackEventInput.value);
+          Sparkcentral.track(trackEventInput.value);
         }
       });
 
@@ -204,7 +204,7 @@
         if (updateUserInput.value) {
           try {
             var value = JSON.parse(updateUserInput.value);
-            BRAND.updateUser(value);
+            Sparkcentral.updateUser(value);
           } catch (err) {
             alert('Bad json')
           }
@@ -214,51 +214,51 @@
       formMessage.addEventListener('submit', function(e) {
         e.preventDefault();
         if (messageInput.value) {
-          BRAND.sendMessage(messageInput.value);
+          Sparkcentral.sendMessage(messageInput.value);
           messageInput.value = '';
         }
       });
 
       signOutButton.addEventListener('click', function() {
-        BRAND.logout();
+        Sparkcentral.logout();
       });
 
       resetButton.addEventListener('click', function() {
-        localStorage.removeItem('CLASS_PREFIX_deviceid');
-        BRAND.logout();
+        localStorage.removeItem('spark_deviceid');
+        Sparkcentral.logout();
       });
 
       initButton.addEventListener('click', function() {
-        BRAND.init(window.BRANDOptions);
-        renderBRAND();
+        Sparkcentral.init(window.SparkcentralOptions);
+        renderSparkcentral();
       });
 
       destroyButton.addEventListener('click', function() {
-        BRAND.destroy();
-        BRAND.on('message:received', function(message) {
+        Sparkcentral.destroy();
+        Sparkcentral.on('message:received', function(message) {
           console.log('Message received', message);
         });
-        BRAND.on('message:sent', function(message) {
+        Sparkcentral.on('message:sent', function(message) {
           console.log('Message sent', message);
         });
       });
 
       openButton.addEventListener('click', function() {
-        BRAND.open();
+        Sparkcentral.open();
       });
 
       closeButton.addEventListener('click', function() {
-        BRAND.close();
+        Sparkcentral.close();
       });
 
       renderButton.addEventListener('click', function() {
-        renderBRAND();
+        renderSparkcentral();
       });
 
 
 
-      BRAND.init(BRANDOptions);
-      renderBRAND();
+      Sparkcentral.init(SparkcentralOptions);
+      renderSparkcentral();
 
     }, false);
   </script>

@@ -34,7 +34,7 @@ describe('Channel Component', () => {
         sandbox.restore();
     });
 
-    it('should render nothing if no DOMAINId', () => {
+    it('should render nothing if no sparkcentralId', () => {
         const store = createMockedStore(sandbox, {
             ...baseStoreProps,
             user: {}

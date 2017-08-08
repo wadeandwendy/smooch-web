@@ -65,8 +65,8 @@ export class ImageUploadComponent extends Component {
         return <form ref={ (c) => this._formNode = findDOMNode(c) }
                      onSubmit={ preventDefault }
                      style={ styles.form }>
-                   <label className='btn btn-CLASS_PREFIX-link image-upload'
-                          htmlFor='CLASS_PREFIX-img-upload'
+                   <label className='btn btn-spark-link image-upload'
+                          htmlFor='spark-img-upload'
                           onMouseOver={ this.onMouseOver }
                           onMouseOut={ this.onMouseOut }
                           style={ styles.icon }
@@ -77,7 +77,7 @@ export class ImageUploadComponent extends Component {
                        <i className='fa fa-camera'></i>
                    </label>
                    <input type='file'
-                          id='CLASS_PREFIX-img-upload'
+                          id='spark-img-upload'
                           accept='image/*'
                           onChange={ this.onImageChange }
                           ref={ (c) => this._fileInputNode = findDOMNode(c) } />

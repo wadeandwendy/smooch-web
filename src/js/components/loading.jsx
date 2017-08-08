@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export class LoadingComponent extends Component {
     render() {
-        const classNames = ['CLASS_PREFIX-fading-circle'];
+        const classNames = ['spark-fading-circle'];
         const {color, dark, style} = this.props;
         const innerCircleStyle = { };
 
@@ -17,9 +17,9 @@ export class LoadingComponent extends Component {
         const circles = [];
 
         for (let i = 1; i < 13; i++) {
-            circles.push(<div className={ `CLASS_PREFIX-circle${i} CLASS_PREFIX-circle` }
+            circles.push(<div className={ `spark-circle${i} spark-circle` }
                               key={ i }>
-                             <div className='CLASS_PREFIX-inner-circle'
+                             <div className='spark-inner-circle'
                                   style={ innerCircleStyle } />
                          </div>);
         }

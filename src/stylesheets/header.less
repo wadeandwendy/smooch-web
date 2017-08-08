@@ -4,13 +4,13 @@
     line-height: @header-height;
     padding: @header-vertical-padding @header-horizontal-padding;
     position: relative;
-    background-color: @CLASS_PREFIX-light-grey;
+    background-color: @spark-light-grey;
     cursor: pointer;
     border-radius: 8px 8px 0 0;
     font-size: 16px;
     font-weight: 400;
     box-sizing: content-box;
-    border-bottom: 1px solid @CLASS_PREFIX-grey;
+    border-bottom: 1px solid @spark-grey;
     color: @header-default-text-color;
 
     @media (max-width: @screen-sm-min) {
@@ -23,21 +23,21 @@
         font-size: 15px;
     }
 
-    .CLASS_PREFIX-close-handle {
+    .spark-close-handle {
         cursor: pointer;
         position: absolute;
         top: @header-vertical-padding;
         right: 10px;
     }
 
-    .CLASS_PREFIX-back-handle {
+    .spark-back-handle {
         cursor: pointer;
         display: inline-block;
         margin-right: 8px;
         height: 30px;
     }
 
-    .CLASS_PREFIX-close-handle .fa {
+    .spark-close-handle .fa {
         font-size: 17px;
     }
 
@@ -54,18 +54,18 @@
     }
 }
 
-#CLASS_PREFIX-header {
+#spark-header {
     .header();
     text-align: center;
 }
 
-#CLASS_PREFIX-badge {
+#spark-badge {
     position: absolute;
     top: 11px;
     left: 10px;
 }
 
-#CLASS_PREFIX-settings-handle  {
+#spark-settings-handle  {
     cursor: pointer;
     position: absolute;
     top: 7px;
@@ -74,19 +74,19 @@
     display: none;
 }
 
-&.CLASS_PREFIX-appear {
-    #CLASS_PREFIX-settings-handle {
+&.spark-appear {
+    #spark-settings-handle {
         display: block;
     }
 }
 
-#CLASS_PREFIX-settings-header {
+#spark-settings-header {
     .header();
 }
 
 
-.CLASS_PREFIX-branding-color-dark {
-    #CLASS_PREFIX-header, #CLASS_PREFIX-settings-header {
+.spark-branding-color-dark {
+    #spark-header, #spark-settings-header {
         &, .fa {
             color: #fff;
         }

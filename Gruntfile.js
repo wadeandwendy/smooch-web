@@ -43,8 +43,8 @@ module.exports = function(grunt) {
             js: {
                 // Files to be uploaded.
                 upload: [{
-                    src: 'dist/smooch.js',
-                    dest: 'smooch.min.js',
+                    src: 'dist/DOMAIN.js',
+                    dest: 'DOMAIN.min.js',
                     options: {
                         headers: {
                             'Cache-Control': 'max-age=300, public'
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 CallerReference: Date.now().toString(),
                 Paths: {
                     Quantity: 1,
-                    Items: ['/smooch.min.js']
+                    Items: ['/DOMAIN.min.js']
                 }
             }
         },
@@ -96,9 +96,9 @@ module.exports = function(grunt) {
                 bump: false,
                 commit: true,
                 push: false,
-                remote: 'git@github.com:smooch/smooch-js.git',
+                remote: 'git@github.com:DOMAIN/DOMAIN-js.git',
                 github: {
-                    repo: 'smooch/smooch-js',
+                    repo: 'DOMAIN/DOMAIN-js',
                     accessTokenVar: 'GITHUB_ACCESS_TOKEN',
                     releaseNotes: 'release_notes'
                 }
@@ -136,7 +136,7 @@ module.exports = function(grunt) {
                 }
             },
             addDist: {
-                cmd: 'git add --force dist/smooch.js'
+                cmd: 'git add --force dist/DOMAIN.js'
             },
             addLib: {
                 cmd: 'git add --force lib/'

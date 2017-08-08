@@ -22,7 +22,7 @@ import { disableAnimation } from '../actions/app-state-actions';
 
 export class WidgetComponent extends Component {
     static propTypes = {
-        smoochId: PropTypes.string,
+        DOMAINId: PropTypes.string,
         app: PropTypes.object.isRequired,
         settings: PropTypes.object.isRequired,
         ui: PropTypes.object.isRequired,
@@ -60,49 +60,49 @@ export class WidgetComponent extends Component {
     };
 
     render() {
-        const {appState, settings, smoochId} = this.props;
-        const {displayStyle, isBrandColorDark, isAccentColorDark, isLinkColorDark} = settings;
+        const {appState, settings, DOMAINId} = this.props;
+        const {displayStyle, isBRANDColorDark, isAccentColorDark, isLinkColorDark} = settings;
 
         const settingsComponent = appState.settingsVisible ? <Settings /> : null;
 
         // if no user set in store or the app has no channels,
         // no need to render the channel page manager
-        const channelsComponent = smoochId && hasChannels(settings) ? <Channel /> : null;
+        const channelsComponent = DOMAINId && hasChannels(settings) ? <Channel /> : null;
 
         const footer = appState.settingsVisible ? null : <ChatInput ref='input' />;
 
         const classNames = [
-            `sk-${displayStyle}-display`
+            `CLASS_PREFIX-${displayStyle}-display`
         ];
 
         if (appState.embedded) {
-            classNames.push('sk-embedded');
+            classNames.push('CLASS_PREFIX-embedded');
         } else {
             if (appState.widgetState === WIDGET_STATE.OPENED) {
-                classNames.push('sk-appear');
+                classNames.push('CLASS_PREFIX-appear');
             } else if (appState.widgetState === WIDGET_STATE.CLOSED) {
-                classNames.push('sk-close');
+                classNames.push('CLASS_PREFIX-close');
             } else {
                 // state is WIDGET_STATE.INIT
-                classNames.push('sk-init');
+                classNames.push('CLASS_PREFIX-init');
             }
         }
 
         if (isMobile.apple.device) {
-            classNames.push('sk-ios-device');
+            classNames.push('CLASS_PREFIX-ios-device');
         }
 
         if (appState.showAnimation) {
-            classNames.push('sk-animation');
+            classNames.push('CLASS_PREFIX-animation');
         }
 
         const notification = appState.errorNotificationMessage ?
             <ErrorNotification message={ appState.errorNotificationMessage } /> : null;
 
         const wrapperClassNames = [
-            `sk-branding-color-${isBrandColorDark ? 'dark' : 'light'}`,
-            `sk-accent-color-${isAccentColorDark ? 'dark' : 'light'}`,
-            `sk-link-color-${isLinkColorDark ? 'dark' : 'light'}`
+            `CLASS_PREFIX-branding-color-${isBRANDColorDark ? 'dark' : 'light'}`,
+            `CLASS_PREFIX-accent-color-${isAccentColorDark ? 'dark' : 'light'}`,
+            `CLASS_PREFIX-link-color-${isLinkColorDark ? 'dark' : 'light'}`
         ];
 
         let messengerButton;
@@ -112,17 +112,17 @@ export class WidgetComponent extends Component {
         }
 
         return <div>
-                   <div id='sk-container'
+                   <div id='CLASS_PREFIX-container'
                         className={ classNames.join(' ') }
                         onTouchStart={ this.onTouchStart }
                         onClick={ this.onClick }>
                        <MessageIndicator />
-                       <div id='sk-wrapper'
+                       <div id='CLASS_PREFIX-wrapper'
                             className={ wrapperClassNames.join(' ') }>
                            <Header />
                            <ReactCSSTransitionGroup component='div'
-                                                    className='sk-notification-container'
-                                                    transitionName='sk-notification'
+                                                    className='CLASS_PREFIX-notification-container'
+                                                    transitionName='CLASS_PREFIX-notification'
                                                     transitionAppear={ true }
                                                     transitionAppearTimeout={ 500 }
                                                     transitionEnterTimeout={ 500 }
@@ -161,6 +161,6 @@ export const Widget = connect(({appState: {settingsVisible, widgetState, errorNo
         app,
         settings: app.settings.web,
         ui,
-        smoochId: user._id
+        DOMAINId: user._id
     };
 })(WidgetComponent);

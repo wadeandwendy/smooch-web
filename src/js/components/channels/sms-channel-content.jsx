@@ -12,7 +12,7 @@ export class SMSChannelContentComponent extends Component {
         phoneNumber: PropTypes.string,
         originator: PropTypes.string,
         linkState: PropTypes.oneOf(['unlinked', 'pending', 'linked']),
-        smoochId: PropTypes.string.isRequired,
+        DOMAINId: PropTypes.string.isRequired,
         text: PropTypes.object.isRequired,
         channelState: PropTypes.object.isRequired,
         type: PropTypes.oneOf(['twilio', 'messagebird'])
@@ -20,7 +20,7 @@ export class SMSChannelContentComponent extends Component {
 
     linkPhoneNumber = () => {
         const {dispatch, channelState:{appUserNumber}, type} = this.props;
-        dispatch(linkSMSChannel(this.props.smoochId, {
+        dispatch(linkSMSChannel(this.props.DOMAINId, {
             type,
             phoneNumber: appUserNumber.replace(/[()\-\s]/g, '')
         }));
@@ -28,7 +28,7 @@ export class SMSChannelContentComponent extends Component {
 
     unlinkChannel = () => {
         const {dispatch, type} = this.props;
-        dispatch(unlinkSMSChannel(this.props.smoochId, type));
+        dispatch(unlinkSMSChannel(this.props.DOMAINId, type));
     }
 
     handleInputChange = (telNumber) => {
@@ -47,7 +47,7 @@ export class SMSChannelContentComponent extends Component {
 
     onSendText = () => {
         const {dispatch, type} = this.props;
-        dispatch(pingSMSChannel(this.props.smoochId, type));
+        dispatch(pingSMSChannel(this.props.DOMAINId, type));
     }
 
     onNumberValid = () => {
@@ -82,7 +82,7 @@ export class SMSChannelContentComponent extends Component {
             };
         }
 
-        const linkButton = appUserNumberValid ? <button className='btn btn-sk-primary'
+        const linkButton = appUserNumberValid ? <button className='btn btn-CLASS_PREFIX-primary'
                                                         onClick={ this.linkPhoneNumber }>
                                                     { smsContinue }
                                                 </button> : '';
@@ -125,12 +125,12 @@ export class SMSChannelContentComponent extends Component {
             color: 'white'
         };
         const linkedComponentButton = isMobile.phone ? <a href={ sendTextUrl }
-                                                          className='btn btn-sk-primary sms-linking'
+                                                          className='btn btn-CLASS_PREFIX-primary sms-linking'
                                                           onClick={ this.onStartTexting }
                                                           style={ linkStyle }>
                                                            { smsStartTexting }
                                                        </a> :
-            <button className='btn btn-sk-primary sms-linking'
+            <button className='btn btn-CLASS_PREFIX-primary sms-linking'
                     onClick={ this.onSendText }>
                 { smsSendText }
             </button>;

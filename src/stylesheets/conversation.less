@@ -1,4 +1,4 @@
-#sk-conversation {
+#CLASS_PREFIX-conversation {
     position: relative;
     padding: 0;
     height: @conversation-height;
@@ -11,7 +11,7 @@
         height: @conversation-height-mobile;
     }
 
-    .sk-intro-section {
+    .CLASS_PREFIX-intro-section {
         background-color: #F8F9FA;
         padding: @intro-padding @intro-padding @intro-padding-bottom @intro-padding;
         border-bottom: solid 1px #E6E6E6;
@@ -24,7 +24,7 @@
         }
 
         .intro-text {
-            color: @sk-base-text-color;
+            color: @CLASS_PREFIX-base-text-color;
             font-size: 13px;
             line-height: 1.3;
             margin-top: 8px;
@@ -44,7 +44,7 @@
         .available-channels {
             margin-top: 22px;
             text-align: center;
-            color: @sk-base-text-color;
+            color: @CLASS_PREFIX-base-text-color;
 
             .channel-icon {
                 cursor: pointer;
@@ -57,95 +57,95 @@
         }
     }
 
-    .sk-messages-container {
+    .CLASS_PREFIX-messages-container {
         position: absolute;
         bottom: 0;
         width: 100%;
         max-height: 100%;
     }
 
-    .sk-fetch-history {
+    .CLASS_PREFIX-fetch-history {
         width: 100%;
         text-align: center;
         font-style: italic;
-        color: @sk-medium-grey;
+        color: @CLASS_PREFIX-medium-grey;
         padding-top: 24px;
         padding-bottom: 5px;
     }
 
-    .sk-messages {
+    .CLASS_PREFIX-messages {
         padding: 0 15px 0 5px;
     }
 
-    .sk-row {
+    .CLASS_PREFIX-row {
         clear: both;
         padding-bottom: 0px;
         padding-top: 2px;
-        &.sk-row-appmaker-first:not(.sk-row-appmaker-last) {
-            .sk-msg-wrapper {
-                .sk-msg, .sk-msg-image {
+        &.CLASS_PREFIX-row-appmaker-first:not(.CLASS_PREFIX-row-appmaker-last) {
+            .CLASS_PREFIX-msg-wrapper {
+                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                     border-bottom-left-radius: 2px;
                 }
             }
         }
-        &.sk-row-appmaker-middle {
-            .sk-msg-wrapper {
-                .sk-msg, .sk-msg-image {
+        &.CLASS_PREFIX-row-appmaker-middle {
+            .CLASS_PREFIX-msg-wrapper {
+                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                     border-bottom-left-radius: 2px;
                     border-top-left-radius: 2px;
                 }
             }
         }
-        &.sk-row-appmaker-last {
+        &.CLASS_PREFIX-row-appmaker-last {
             margin-bottom: 10px;
 
-            &:not(.sk-row-appmaker-first) {
-              .sk-msg-wrapper {
-                  .sk-msg, .sk-msg-image {
+            &:not(.CLASS_PREFIX-row-appmaker-first) {
+              .CLASS_PREFIX-msg-wrapper {
+                  .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                       border-top-left-radius: 2px;
                   }
               }
             }
         }
 
-        &.sk-row-appuser-first:not(.sk-row-appuser-last) {
-            .sk-msg-wrapper {
-                .sk-msg, .sk-msg-image {
+        &.CLASS_PREFIX-row-appuser-first:not(.CLASS_PREFIX-row-appuser-last) {
+            .CLASS_PREFIX-msg-wrapper {
+                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                     border-bottom-right-radius: 2px;
                 }
             }
         }
-        &.sk-row-appuser-middle {
-            .sk-msg-wrapper {
-                .sk-msg, .sk-msg-image {
+        &.CLASS_PREFIX-row-appuser-middle {
+            .CLASS_PREFIX-msg-wrapper {
+                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                     border-bottom-right-radius: 2px;
                     border-top-right-radius: 2px;
                 }
             }
         }
-        &.sk-row-appuser-last {
+        &.CLASS_PREFIX-row-appuser-last {
             margin-bottom: 10px;
 
-            &:not(.sk-row-appuser-first) {
-                .sk-msg-wrapper {
-                    .sk-msg, .sk-msg-image {
+            &:not(.CLASS_PREFIX-row-appuser-first) {
+                .CLASS_PREFIX-msg-wrapper {
+                    .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                         border-top-right-radius: 2px;
                     }
                 }
             }
         }
 
-        .sk-msg-wrapper {
+        .CLASS_PREFIX-msg-wrapper {
             max-width: 100%;
             position: relative;
 
-            .sk-msg, .sk-msg-image {
+            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
                 font-size: @font-size-base;
                 overflow: hidden;
                 line-height: 1.25;
                 position: relative;
                 border-radius: 14px;
-                border-left-color: @sk-blue;
+                border-left-color: @CLASS_PREFIX-blue;
 
                 .transition(opacity 150ms);
 
@@ -192,11 +192,11 @@
                     .bounce1, .bounce2, .bounce3 {
                         height: 15px;
                         width: 15px;
-                        background-color: @sk-blue;
+                        background-color: @CLASS_PREFIX-blue;
                     }
                 }
             }
-            .sk-action {
+            .CLASS_PREFIX-action {
                 margin-bottom: 5px;
 
                 .btn {
@@ -214,30 +214,30 @@
                     margin-left: 8px;
                 }
             }
-            .sk-message-text {
+            .CLASS_PREFIX-message-text {
                 display: inline-block;
                 max-width: 204px;
             }
-            .sk-message-item {
+            .CLASS_PREFIX-message-item {
                 padding: 8px 13px 0;
                 line-height: 1.3;
             }
-            .sk-last-item {
+            .CLASS_PREFIX-last-item {
                 padding-bottom: 9px;
             }
-            .sk-message-location-loading {
+            .CLASS_PREFIX-message-location-loading {
                 padding: 0;
                 margin: 6px 30px;
 
-                .sk-fading-circle {
+                .CLASS_PREFIX-fading-circle {
                     width: 23px;
                     height: 23px;
                 }
             }
-            .sk-msg-unsent {
+            .CLASS_PREFIX-msg-unsent {
                 opacity: 0.3;
             }
-            .sk-retry {
+            .CLASS_PREFIX-retry {
                 float: right;
                 clear: right;
                 font-size: 13px;
@@ -245,13 +245,13 @@
                 line-height: 16px;
             }
         }
-        &.sk-left-row {
-            .sk-msg-wrapper {
+        &.CLASS_PREFIX-left-row {
+            .CLASS_PREFIX-msg-wrapper {
                 display: inline-block;
 
-                .sk-msg, .sk-msg-image {
-                    background-color: @sk-light-grey;
-                    color: @sk-darker-grey;
+                .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+                    background-color: @CLASS_PREFIX-light-grey;
+                    color: @CLASS_PREFIX-darker-grey;
                     max-width: 200px;
 
                     &:after {
@@ -260,14 +260,14 @@
                         border-right-color: white;
                     }
                     a.link, a.link:visited {
-                        color: @sk-blue;
+                        color: @CLASS_PREFIX-blue;
                     }
                 }
             }
         }
-        &.sk-right-row {
-            .sk-msg, .sk-msg-image {
-                background-color: @sk-blue;
+        &.CLASS_PREFIX-right-row {
+            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+                background-color: @CLASS_PREFIX-blue;
                 float: right;
                 color: white;
                 max-width: 204px;
@@ -282,7 +282,7 @@
                 }
             }
 
-            .sk-msg-image {
+            .CLASS_PREFIX-msg-image {
                 background-color: transparent;
             }
         }
@@ -290,13 +290,13 @@
             padding-bottom: 10px;
         }
     }
-    .sk-clear {
+    .CLASS_PREFIX-clear {
         clear: both;
     }
 
     .scrollbar-mixin();
 
-    .sk-logo {
+    .CLASS_PREFIX-logo {
         padding-bottom: 10px;
         margin-left: @logo-margin;
 
@@ -305,7 +305,7 @@
             color: #bbb;
             text-decoration: none;
         }
-        .sk-image {
+        .CLASS_PREFIX-image {
             position: relative;
             left: 2px;
             top: 3px;
@@ -313,11 +313,11 @@
             vertical-align: baseline;
         }
     }
-    .sk-from {
+    .CLASS_PREFIX-from {
         white-space: nowrap;
         top: -20px;
         font-size: 12px;
-        color: @sk-base-text-color;
+        color: @CLASS_PREFIX-base-text-color;
         padding-left: 12px;
         margin-bottom: 2px;
         margin-left: 45px;
@@ -330,7 +330,7 @@
         text-align: center;
 
         p {
-            color: @sk-medium-grey;
+            color: @CLASS_PREFIX-medium-grey;
         }
 
         .connect-notification-channels {
@@ -341,7 +341,7 @@
                 display: inline-block;
 
                 .channel-link {
-                    color: @sk-blue;
+                    color: @CLASS_PREFIX-blue;
                     display: inline-block;
                 }
             }
@@ -350,42 +350,42 @@
     }
 }
 
-.sk-accent-color-light {
-    #sk-conversation {
-        .sk-right-row {
-            .sk-msg, .sk-msg-image {
-                color: @sk-darker-grey;
+.CLASS_PREFIX-accent-color-light {
+    #CLASS_PREFIX-conversation {
+        .CLASS_PREFIX-right-row {
+            .CLASS_PREFIX-msg, .CLASS_PREFIX-msg-image {
+                color: @CLASS_PREFIX-darker-grey;
 
                 a.link, a.link:visited {
-                    color: @sk-darker-grey;
+                    color: @CLASS_PREFIX-darker-grey;
                 }
             }
         }
     }
 }
 
-.sk-link-color-light {
-    #sk-conversation {
-        .sk-left-row {
+.CLASS_PREFIX-link-color-light {
+    #CLASS_PREFIX-conversation {
+        .CLASS_PREFIX-left-row {
             .btn {
-                color: @sk-darker-grey;
+                color: @CLASS_PREFIX-darker-grey;
             }
         }
     }
 }
 
-.sk-msg-avatar {
+.CLASS_PREFIX-msg-avatar {
     width: 31px;
     height: auto;
     border-radius: 50%;
     margin-right: 5px;
     display: inline-block;
     margin-left: 9px;
-    &.sk-msg-avatar-img {
+    &.CLASS_PREFIX-msg-avatar-img {
         margin-bottom: 0px;
     }
 }
-.sk-msg-avatar-placeholder {
+.CLASS_PREFIX-msg-avatar-placeholder {
     width: 35px;
     display: inline-block;
     margin-right: 10px;

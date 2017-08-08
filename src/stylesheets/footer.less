@@ -1,4 +1,4 @@
-#sk-footer {
+#CLASS_PREFIX-footer {
     position: relative;
     width: 100%;
     height: @footer-height;
@@ -14,7 +14,7 @@
     .image-upload {
         height: @footer-height;
         width: @footer-height - 10px;
-        color: @sk-medium-grey;
+        color: @CLASS_PREFIX-medium-grey;
         display: inline-block;
         padding: 15px 10px;
         font-size: @font-size-base;
@@ -53,14 +53,14 @@
             }
 
             &:-ms-input-placeholder {
-                color: @sk-medium-grey;
+                color: @CLASS_PREFIX-medium-grey;
             }
         }
     }
 
     .send {
         margin-top: 1px;
-        color: @sk-medium-grey;
+        color: @CLASS_PREFIX-medium-grey;
         font-weight: 600;
         position: relative;
         height: @footer-height;
@@ -71,7 +71,7 @@
         display: inline-block;
 
         &.active {
-            color: @sk-blue;
+            color: @CLASS_PREFIX-blue;
 
             &:hover {
                 .opacity(0.8);

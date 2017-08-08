@@ -4,13 +4,13 @@
     line-height: @header-height;
     padding: @header-vertical-padding @header-horizontal-padding;
     position: relative;
-    background-color: @sk-light-grey;
+    background-color: @CLASS_PREFIX-light-grey;
     cursor: pointer;
     border-radius: 8px 8px 0 0;
     font-size: 16px;
     font-weight: 400;
     box-sizing: content-box;
-    border-bottom: 1px solid @sk-grey;
+    border-bottom: 1px solid @CLASS_PREFIX-grey;
     color: @header-default-text-color;
 
     @media (max-width: @screen-sm-min) {
@@ -23,21 +23,21 @@
         font-size: 15px;
     }
 
-    .sk-close-handle {
+    .CLASS_PREFIX-close-handle {
         cursor: pointer;
         position: absolute;
         top: @header-vertical-padding;
         right: 10px;
     }
 
-    .sk-back-handle {
+    .CLASS_PREFIX-back-handle {
         cursor: pointer;
         display: inline-block;
         margin-right: 8px;
         height: 30px;
     }
 
-    .sk-close-handle .fa {
+    .CLASS_PREFIX-close-handle .fa {
         font-size: 17px;
     }
 
@@ -54,18 +54,18 @@
     }
 }
 
-#sk-header {
+#CLASS_PREFIX-header {
     .header();
     text-align: center;
 }
 
-#sk-badge {
+#CLASS_PREFIX-badge {
     position: absolute;
     top: 11px;
     left: 10px;
 }
 
-#sk-settings-handle  {
+#CLASS_PREFIX-settings-handle  {
     cursor: pointer;
     position: absolute;
     top: 7px;
@@ -74,19 +74,19 @@
     display: none;
 }
 
-&.sk-appear {
-    #sk-settings-handle {
+&.CLASS_PREFIX-appear {
+    #CLASS_PREFIX-settings-handle {
         display: block;
     }
 }
 
-#sk-settings-header {
+#CLASS_PREFIX-settings-header {
     .header();
 }
 
 
-.sk-branding-color-dark {
-    #sk-header, #sk-settings-header {
+.CLASS_PREFIX-branding-color-dark {
+    #CLASS_PREFIX-header, #CLASS_PREFIX-settings-header {
         &, .fa {
             color: #fff;
         }

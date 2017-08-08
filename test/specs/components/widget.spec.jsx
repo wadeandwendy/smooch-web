@@ -113,8 +113,8 @@ describe('Widget Component', () => {
             component = wrapComponentWithStore(Widget, null, mockedStore);
         });
 
-        it('should have a sk-close class', () => {
-            findRenderedDOMComponentsWithId(component, 'sk-container').className.indexOf('sk-close').should.be.gt(-1);
+        it('should have a CLASS_PREFIX-close class', () => {
+            findRenderedDOMComponentsWithId(component, 'CLASS_PREFIX-container').className.indexOf('CLASS_PREFIX-close').should.be.gt(-1);
         });
     });
 
@@ -128,8 +128,8 @@ describe('Widget Component', () => {
             component = wrapComponentWithStore(Widget, null, mockedStore);
         });
 
-        it('should have a sk-appear class', () => {
-            findRenderedDOMComponentsWithId(component, 'sk-container').className.indexOf('sk-appear').should.be.gt(-1);
+        it('should have a CLASS_PREFIX-appear class', () => {
+            findRenderedDOMComponentsWithId(component, 'CLASS_PREFIX-container').className.indexOf('CLASS_PREFIX-appear').should.be.gt(-1);
         });
     });
 

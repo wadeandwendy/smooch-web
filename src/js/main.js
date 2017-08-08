@@ -1,3 +1,3 @@
-import {Smooch} from './smooch';
+import {BRAND} from './DOMAIN';
 
-module.exports = new Smooch();
+module.exports = new BRAND();

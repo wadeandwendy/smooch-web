@@ -1,15 +1,10 @@
 {
-  "name": "smooch",
+  "name": "DOMAIN",
   "version": "3.15.0",
-  "authors": [
-    "Andrew Lavers <andrew@smooch.io>",
-    "Marc-Antoine Lemieux <marc@smooch.io>",
-    "Julian Garritano <julian@smooch.io>"
-  ],
-  "description": "Smooch Javascript SDK",
-  "main": "dist/smooch.js",
+  "description": "BRAND Javascript SDK",
+  "main": "dist/DOMAIN.js",
   "keywords": [
-    "smooch",
+    "DOMAIN",
     "javascript",
     "sdk"
   ],

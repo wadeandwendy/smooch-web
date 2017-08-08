@@ -1,16 +1,16 @@
-import { Smooch } from './smooch';
+import { BRAND } from './DOMAIN';
 
 (function(root, factory) {
     /* global define:false */
     if (typeof define === 'function' && define.amd) {
         define([], function() {
-            return (root.Smooch = factory());
+            return (root.BRAND = factory());
         });
     } else if (typeof module === 'object' && module.exports) {
         module.exports = factory();
     } else {
-        root.Smooch = factory();
+        root.BRAND = factory();
     }
 }(global, () => {
-    return new Smooch();
+    return new BRAND();
 }));

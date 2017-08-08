@@ -12,7 +12,7 @@ function setItem(key, value) {
         }
     }
     catch (err) {
-        console.warn('Smooch local storage warn: localStorage not available; falling back on memory storage'); //eslint-disable-line no-console
+        console.warn('BRAND local storage warn: localStorage not available; falling back on memory storage'); //eslint-disable-line no-console
         memoryStorage[key] = value;
     }
 }

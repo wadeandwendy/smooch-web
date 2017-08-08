@@ -1,13 +1,13 @@
-import { Smooch } from 'smooch-core/lib/smooch';
+import { BRAND } from 'smooch-core/lib/DOMAIN';
 import urljoin from 'urljoin';
 
 import { VERSION } from '../constants/version';
 
 export function core({auth, appState}) {
-    return new Smooch(auth, {
+    return new BRAND(auth, {
         serviceUrl: urljoin(appState.serverURL, 'v1'),
         headers: {
-            'x-smooch-sdk': `web/${VERSION}`
+            'x-DOMAIN-sdk': `web/${VERSION}`
         }
     });
 }

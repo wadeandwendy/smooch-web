@@ -65,14 +65,14 @@ export class HeaderComponent extends Component {
             ) : null;
 
         const settingsButton = showSettingsButton ? (
-            <div id='sk-settings-handle'
+            <div id='CLASS_PREFIX-settings-handle'
                  onClick={ this.showSettings }>
                 <i className='fa fa-ellipsis-h'></i>
             </div>
             ) : null;
 
         const backButton = widgetOpened && settingsMode ? (
-            <div className='sk-back-handle'
+            <div className='CLASS_PREFIX-back-handle'
                  onClick={ this.hideSettings }>
                 <i className='fa fa-arrow-left'></i>
             </div>
@@ -80,7 +80,7 @@ export class HeaderComponent extends Component {
 
         let closeHandle = null;
         if (!embedded) {
-            closeHandle = widgetOpened ? <div className='sk-close-handle sk-close-hidden'>
+            closeHandle = widgetOpened ? <div className='CLASS_PREFIX-close-handle CLASS_PREFIX-close-hidden'>
                                              <i className='fa fa-times'></i>
                                          </div> : null;
         }
@@ -106,9 +106,9 @@ export class HeaderComponent extends Component {
             };
         }
 
-        return <div id={ settingsMode ? 'sk-settings-header' : 'sk-header' }
+        return <div id={ settingsMode ? 'CLASS_PREFIX-settings-header' : 'CLASS_PREFIX-header' }
                     onClick={ this.onClick }
-                    className='sk-header-wrapper'
+                    className='CLASS_PREFIX-header-wrapper'
                     style={ style }>
                    { settingsButton }
                    { settingsMode ? settingsText : headerText }

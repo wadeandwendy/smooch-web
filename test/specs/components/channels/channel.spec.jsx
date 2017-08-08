@@ -34,7 +34,7 @@ describe('Channel Component', () => {
         sandbox.restore();
     });
 
-    it('should render nothing if no smoochId', () => {
+    it('should render nothing if no DOMAINId', () => {
         const store = createMockedStore(sandbox, {
             ...baseStoreProps,
             user: {}

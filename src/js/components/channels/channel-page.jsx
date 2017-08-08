@@ -35,7 +35,7 @@ export class ChannelPageComponent extends Component {
             <span dangerouslySetInnerHTML={ {    __html: descriptionHtml} } /> :
             <span>{ description }</span>;
 
-        return <div className={ `sk-channel ${visible ? 'sk-channel-visible' : 'sk-channel-hidden'}` }>
+        return <div className={ `CLASS_PREFIX-channel ${visible ? 'CLASS_PREFIX-channel-visible' : 'CLASS_PREFIX-channel-hidden'}` }>
                    <div className='content-wrapper'>
                        <div className='channel-header'>
                            <img className='channel-icon'

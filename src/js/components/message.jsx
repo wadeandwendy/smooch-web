@@ -81,12 +81,12 @@ class Message extends Component {
             lastItem = 'location'
         }
 
-        const avatarClass = hasImage ? ['sk-msg-avatar', 'sk-msg-avatar-img'] : ['sk-msg-avatar'];
-        const avatarPlaceHolder = isAppUser ? null : (<div className='sk-msg-avatar-placeholder' />);
-        const containerClasses = ['sk-msg'];
+        const avatarClass = hasImage ? ['CLASS_PREFIX-msg-avatar', 'CLASS_PREFIX-msg-avatar-img'] : ['CLASS_PREFIX-msg-avatar'];
+        const avatarPlaceHolder = isAppUser ? null : (<div className='CLASS_PREFIX-msg-avatar-placeholder' />);
+        const containerClasses = ['CLASS_PREFIX-msg'];
 
         if (hasImage || actions.length > 0) {
-            containerClasses.push('sk-msg-image');
+            containerClasses.push('CLASS_PREFIX-msg-image');
         }
 
         const actionList = actions.map((action) => {
@@ -100,10 +100,10 @@ class Message extends Component {
                  className={ avatarClass.join(' ') }
                  src={ avatarUrl } />;
 
-        const textClasses = ['sk-message-item', 'sk-message-text'];
+        const textClasses = ['CLASS_PREFIX-message-item', 'CLASS_PREFIX-message-text'];
 
         if (lastItem === 'text') {
-            textClasses.push('sk-last-item');
+            textClasses.push('CLASS_PREFIX-last-item');
         }
 
         const textPart = (hasText || hasFile) && <TextMessage {...this.props}
@@ -118,67 +118,67 @@ class Message extends Component {
             }
         }
 
-        const rowClass = ['sk-row'];
+        const rowClass = ['CLASS_PREFIX-row'];
 
         if (isAppUser) {
-            rowClass.push('sk-right-row');
+            rowClass.push('CLASS_PREFIX-right-row');
         } else {
-            rowClass.push('sk-left-row');
+            rowClass.push('CLASS_PREFIX-left-row');
         }
 
         if (firstInGroup) {
             if (isAppUser) {
-                rowClass.push('sk-row-appuser-first');
+                rowClass.push('CLASS_PREFIX-row-appuser-first');
             } else {
-                rowClass.push('sk-row-appmaker-first');
+                rowClass.push('CLASS_PREFIX-row-appmaker-first');
             }
         }
 
         if (lastInGroup) {
             if (isAppUser) {
-                rowClass.push('sk-row-appuser-last');
+                rowClass.push('CLASS_PREFIX-row-appuser-last');
             } else {
-                rowClass.push('sk-row-appmaker-last');
+                rowClass.push('CLASS_PREFIX-row-appmaker-last');
             }
         }
 
         if (!firstInGroup && !lastInGroup) {
             if (isAppUser) {
-                rowClass.push('sk-row-appuser-middle');
+                rowClass.push('CLASS_PREFIX-row-appuser-middle');
             } else {
-                rowClass.push('sk-row-appmaker-middle');
+                rowClass.push('CLASS_PREFIX-row-appmaker-middle');
             }
         }
 
-        const fromName = <div className='sk-from'>
+        const fromName = <div className='CLASS_PREFIX-from'>
                              { isAppUser ? '' : name }
                          </div>;
 
-        const actionListClasses = ['sk-message-item'];
+        const actionListClasses = ['CLASS_PREFIX-message-item'];
 
         if (lastItem === 'actions') {
-            actionListClasses.push('sk-last-item');
+            actionListClasses.push('CLASS_PREFIX-last-item');
         }
 
         if ([SEND_STATUS.SENDING, SEND_STATUS.FAILED].includes(sendStatus)) {
-            containerClasses.push('sk-msg-unsent');
+            containerClasses.push('CLASS_PREFIX-msg-unsent');
         }
 
-        const clickToRetry = <div className='sk-retry'>
+        const clickToRetry = <div className='CLASS_PREFIX-retry'>
                                  { isMobile.any ? tapToRetryText : clickToRetryText }
                              </div>;
 
 
-        const locationClasses = ['sk-message-item'];
+        const locationClasses = ['CLASS_PREFIX-message-item'];
 
         if (lastItem === 'location') {
-            locationClasses.push('sk-last-item');
+            locationClasses.push('CLASS_PREFIX-last-item');
         }
 
         if (sendStatus === SEND_STATUS.SENDING) {
-            locationClasses.push('sk-message-location-loading');
+            locationClasses.push('CLASS_PREFIX-message-location-loading');
         } else {
-            locationClasses.push('sk-message-text');
+            locationClasses.push('CLASS_PREFIX-message-text');
         }
 
         let locationPart;
@@ -196,7 +196,7 @@ class Message extends Component {
         return <div className={ rowClass.join(' ') }>
                    { !isAppUser && firstInGroup ? fromName : null }
                    { lastInGroup ? avatar : avatarPlaceHolder }
-                   <div className='sk-msg-wrapper'>
+                   <div className='CLASS_PREFIX-msg-wrapper'>
                        <div className={ containerClasses.join(' ') }
                             style={ style }
                             ref='messageContent'
@@ -210,7 +210,7 @@ class Message extends Component {
                        </div>
                        { sendStatus === SEND_STATUS.FAILED ? clickToRetry : null }
                    </div>
-                   <div className='sk-clear'></div>
+                   <div className='CLASS_PREFIX-clear'></div>
                </div>;
     }
 }

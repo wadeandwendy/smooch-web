@@ -31,7 +31,7 @@ export class MessengerButtonComponent extends Component {
 
     render() {
         const {unreadCount, shown, settings} = this.props;
-        const {brandColor, isBrandColorDark, buttonIconUrl} = settings;
+        const {brandColor, isBRANDColorDark, buttonIconUrl} = settings;
 
         const style = {
             backgroundColor: `#${brandColor}`
@@ -41,11 +41,11 @@ export class MessengerButtonComponent extends Component {
 
         if (buttonIconUrl) {
             content = <div className='messenger-button-icon'>
-                          <img alt='Smooch Messenger Button'
+                          <img alt='BRAND Messenger Button'
                                src={ buttonIconUrl } />
                       </div>;
         } else {
-            content = <DefaultButtonIcon isBrandColorDark={ isBrandColorDark } />;
+            content = <DefaultButtonIcon isBRANDColorDark={ isBRANDColorDark } />;
         }
 
         let unreadBadge;
@@ -55,7 +55,7 @@ export class MessengerButtonComponent extends Component {
                           </div>;
         }
 
-        return <div id='sk-messenger-button'
+        return <div id='CLASS_PREFIX-messenger-button'
                     className={ `messenger-button-${shown ? 'shown' : 'hidden'}` }
                     style={ style }
                     onClick={ this.onClick }>

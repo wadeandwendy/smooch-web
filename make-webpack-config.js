@@ -21,11 +21,11 @@ module.exports = function(options) {
     const entry = options.assetsOnly ? {
         assets: './src/js/constants/assets'
     } : {
-        smooch: ['./src/js/utils/polyfills', './src/js/umd']
+        DOMAIN: ['./src/js/utils/polyfills', './src/js/umd']
     };
 
     if (options.hotComponents && !options.assetsOnly) {
-        entry.smooch.unshift('webpack-hot-middleware/client');
+        entry.DOMAIN.unshift('webpack-hot-middleware/client');
     }
 
     const fileLimit = options.bundleAll ? 100000 : 1;
@@ -64,7 +64,7 @@ module.exports = function(options) {
         filename: '[name].js' + (options.longTermCaching ? '?[chunkhash]' : ''),
         chunkFilename: (options.devServer ? '[id].js' : '[name].js') + (options.longTermCaching ? '?[chunkhash]' : ''),
         sourceMapFilename: '[file].map',
-        library: options.assetsOnly ? undefined : 'Smooch',
+        library: options.assetsOnly ? undefined : 'BRAND',
         libraryTarget: options.assetsOnly ? 'commonjs2' : 'var',
         pathinfo: options.debug
     };

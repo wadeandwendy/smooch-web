@@ -45,7 +45,7 @@ describe('SMS Channel Content Component', () => {
 
     describe('user has sms linking enabled', () => {
         const linkedProps = {
-            smoochId: '12345',
+            DOMAINId: '12345',
             phoneNumber: '123456789',
             channelState: {
                 appUserNumber: '+151455555555',
@@ -61,14 +61,14 @@ describe('SMS Channel Content Component', () => {
             const appUserPhoneNumber = TestUtils.findRenderedDOMComponentWithClass(component, 'linked-state');
             appUserPhoneNumber.textContent.should.eq(`${linkedProps.channelState.appUserNumber}${storeState.ui.text.smsChangeNumber}`);
 
-            const button = TestUtils.findRenderedDOMComponentWithClass(component, 'btn-sk-primary');
+            const button = TestUtils.findRenderedDOMComponentWithClass(component, 'btn-CLASS_PREFIX-primary');
             button.textContent.should.eql(storeState.ui.text.smsSendText);
         });
     });
 
     describe('user has sms linking disabled', () => {
         const unlinkedProps = {
-            smoochId: '12345',
+            DOMAINId: '12345',
             phoneNumber: '123456789',
             channelState: {
                 appUserNumber: '',
@@ -93,10 +93,10 @@ describe('SMS Channel Content Component', () => {
                         }
                     };
                     component = wrapComponentWithStore(SMSChannelContent, props, mockedStore);
-                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'btn-sk-primary').length.should.eq(appUserNumberValid ? 1 : 0);
+                    TestUtils.scryRenderedDOMComponentsWithClass(component, 'btn-CLASS_PREFIX-primary').length.should.eq(appUserNumberValid ? 1 : 0);
 
                     if (appUserNumberValid) {
-                        const button = TestUtils.findRenderedDOMComponentWithClass(component, 'btn-sk-primary');
+                        const button = TestUtils.findRenderedDOMComponentWithClass(component, 'btn-CLASS_PREFIX-primary');
                         button.textContent.should.eql(storeState.ui.text.smsContinue);
                     }
                 });
@@ -136,7 +136,7 @@ describe('SMS Channel Content Component', () => {
 
     describe('user is in pending state', () => {
         const pendingProps = {
-            smoochId: '12345',
+            DOMAINId: '12345',
             channelState: {
                 appUserNumberValid: true,
                 appUserNumber: '+15145555555',

@@ -9,14 +9,14 @@ export class ChannelComponent extends Component {
         appChannels: PropTypes.array.isRequired,
         channelStates: PropTypes.object.isRequired,
         visibleChannelType: PropTypes.string,
-        smoochId: PropTypes.string,
+        DOMAINId: PropTypes.string,
         clients: PropTypes.array
     };
 
     render() {
-        const {appChannels, visibleChannelType, smoochId, clients, pendingClients, channelStates} = this.props;
+        const {appChannels, visibleChannelType, DOMAINId, clients, pendingClients, channelStates} = this.props;
 
-        if (!smoochId) {
+        if (!DOMAINId) {
             return null;
         }
 
@@ -39,7 +39,7 @@ export class ChannelComponent extends Component {
                        <details.Component {...channel}
                                           channelState={ channelStates[channel.type] }
                                           getContent={ details.getContent }
-                                          smoochId={ smoochId }
+                                          DOMAINId={ DOMAINId }
                                           linked={ !!client } />
                    </ChannelPage>;
         });
@@ -55,7 +55,7 @@ export const Channel = connect(({appState, app, user, integrations}) => {
         visibleChannelType: appState.visibleChannelType,
         appChannels: app.integrations,
         channelStates: integrations,
-        smoochId: user._id,
+        DOMAINId: user._id,
         clients: user.clients,
         pendingClients: user.pendingClients
     };

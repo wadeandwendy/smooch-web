@@ -283,7 +283,7 @@ export class ConversationComponent extends Component {
         let retrieveHistory;
         if (hasMoreMessages) {
             if (isFetchingMoreMessages) {
-                retrieveHistory = <div className='sk-fetch-history'>
+                retrieveHistory = <div className='CLASS_PREFIX-fetch-history'>
                                       { fetchingHistory }
                                   </div>;
             } else {
@@ -292,7 +292,7 @@ export class ConversationComponent extends Component {
                     this.fetchHistory();
                 };
 
-                retrieveHistory = <div className='sk-fetch-history'>
+                retrieveHistory = <div className='CLASS_PREFIX-fetch-history'>
                                       <a href='#'
                                          onClick={ onClick }>
                                           { fetchHistory }
@@ -303,25 +303,25 @@ export class ConversationComponent extends Component {
 
         const introduction = hasMoreMessages ? null : <Introduction/>;
 
-        return <div id='sk-conversation'
+        return <div id='CLASS_PREFIX-conversation'
                     className={ errorNotificationMessage && 'notification-shown' }
                     ref='container'
                     onTouchMove={ this.onTouchMove }
                     onScroll={ isMobile.any ? this.onScroll : this.debounceOnScroll }>
                    { introduction }
                    <div ref='messagesContainer'
-                        className='sk-messages-container'
+                        className='CLASS_PREFIX-messages-container'
                         style={ messagesContainerStyle }>
                        { retrieveHistory }
                        <div ref='messages'
-                            className='sk-messages'>
+                            className='CLASS_PREFIX-messages'>
                            { messageItems }
                        </div>
-                       <div className='sk-logo'
+                       <div className='CLASS_PREFIX-logo'
                             ref='logo'
                             style={ logoStyle }>
                            <a href='https://smooch.io/live-web-chat/?utm_source=widget'
-                              target='_blank'><span>Messaging by</span> <img className='sk-image'
+                              target='_blank'><span>Messaging by</span> <img className='CLASS_PREFIX-image'
                                                                                                                                        src={ logo }
                                                                                                                                        srcSet={ `${logo} 1x, ${logo2x} 2x` }
                                                                                                                                        alt='smooch.io' /></a>

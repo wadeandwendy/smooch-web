@@ -15,7 +15,7 @@ export class WeChatChannelContentComponent extends Component {
         const {channelState, qrCodeError} = this.props;
 
         if (channelState.hasError) {
-            return <a className={ 'sk-error-link' }
+            return <a className={ 'CLASS_PREFIX-error-link' }
                       onClick={ fetchWeChatQRCode }>
                        { qrCodeError }
                    </a>;

@@ -8,9 +8,9 @@
   <title>Embedded Conversation Demo</title>
   <script src="SCRIPT_URL"></script>
   <script>
-    /* global Smooch: false */
+    /* global BRAND: false */
 
-    window.SmoochOptions = {
+    window.BRANDOptions = {
       serviceUrl: 'ROOT_URL',
       appToken: 'APP_TOKEN',
       givenName: 'GIVEN_NAME',
@@ -23,10 +23,10 @@
       embedded: true
     };
 
-    Smooch.on('message:received', function(message) {
+    BRAND.on('message:received', function(message) {
       console.log('Message received', message);
     });
-    Smooch.on('message:sent', function(message) {
+    BRAND.on('message:sent', function(message) {
       console.log('Message sent', message);
     });
   </script>
@@ -152,8 +152,8 @@
 
   </div>
   <script>
-    function renderSmooch() {
-      Smooch.render(document.getElementById('chat-container'));
+    function renderBRAND() {
+      BRAND.render(document.getElementById('chat-container'));
     }
 
 
@@ -177,25 +177,25 @@
       var closeButton = document.getElementById('close');
       var renderButton = document.getElementById('rerender');
 
-      if (window.SmoochOptions.userId) {
-        userIdInput.value = window.SmoochOptions.userId;
+      if (window.BRANDOptions.userId) {
+        userIdInput.value = window.BRANDOptions.userId;
       }
 
-      if (window.SmoochOptions.jwt) {
-        jwtInput.value = window.SmoochOptions.jwt;
+      if (window.BRANDOptions.jwt) {
+        jwtInput.value = window.BRANDOptions.jwt;
       }
 
 
 
       formMain.addEventListener('submit', function(e) {
         e.preventDefault();
-        Smooch.login(userIdInput.value, jwtInput.value);
+        BRAND.login(userIdInput.value, jwtInput.value);
       });
 
       formTrack.addEventListener('submit', function(e) {
         e.preventDefault();
         if (trackEventInput.value) {
-          Smooch.track(trackEventInput.value);
+          BRAND.track(trackEventInput.value);
         }
       });
 
@@ -204,7 +204,7 @@
         if (updateUserInput.value) {
           try {
             var value = JSON.parse(updateUserInput.value);
-            Smooch.updateUser(value);
+            BRAND.updateUser(value);
           } catch (err) {
             alert('Bad json')
           }
@@ -214,51 +214,51 @@
       formMessage.addEventListener('submit', function(e) {
         e.preventDefault();
         if (messageInput.value) {
-          Smooch.sendMessage(messageInput.value);
+          BRAND.sendMessage(messageInput.value);
           messageInput.value = '';
         }
       });
 
       signOutButton.addEventListener('click', function() {
-        Smooch.logout();
+        BRAND.logout();
       });
 
       resetButton.addEventListener('click', function() {
-        localStorage.removeItem('sk_deviceid');
-        Smooch.logout();
+        localStorage.removeItem('CLASS_PREFIX_deviceid');
+        BRAND.logout();
       });
 
       initButton.addEventListener('click', function() {
-        Smooch.init(window.SmoochOptions);
-        renderSmooch();
+        BRAND.init(window.BRANDOptions);
+        renderBRAND();
       });
 
       destroyButton.addEventListener('click', function() {
-        Smooch.destroy();
-        Smooch.on('message:received', function(message) {
+        BRAND.destroy();
+        BRAND.on('message:received', function(message) {
           console.log('Message received', message);
         });
-        Smooch.on('message:sent', function(message) {
+        BRAND.on('message:sent', function(message) {
           console.log('Message sent', message);
         });
       });
 
       openButton.addEventListener('click', function() {
-        Smooch.open();
+        BRAND.open();
       });
 
       closeButton.addEventListener('click', function() {
-        Smooch.close();
+        BRAND.close();
       });
 
       renderButton.addEventListener('click', function() {
-        renderSmooch();
+        renderBRAND();
       });
 
 
 
-      Smooch.init(SmoochOptions);
-      renderSmooch();
+      BRAND.init(BRANDOptions);
+      renderBRAND();
 
     }, false);
   </script>

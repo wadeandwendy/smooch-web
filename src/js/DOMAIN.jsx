@@ -43,7 +43,7 @@ function renderWidget(container) {
         return container;
     } else {
         const el = document.createElement('div');
-        el.setAttribute('id', 'sk-holder');
+        el.setAttribute('id', 'CLASS_PREFIX-holder');
         render(<Root store={ store } />, el);
 
         waitForPage().then(() => {
@@ -108,7 +108,7 @@ function onStoreChange({messages, unreadCount}) {
     }
 }
 
-export class Smooch {
+export class BRAND {
     VERSION = VERSION
 
     on() {

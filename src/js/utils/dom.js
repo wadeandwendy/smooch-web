@@ -21,17 +21,17 @@ export function waitForPage() {
 
 export function preventMobilePageScroll() {
     const htmlEl = document.querySelector('html');
-    htmlEl.classList.add('sk-widget-opened');
+    htmlEl.classList.add('CLASS_PREFIX-widget-opened');
     if (isMobile.apple.device) {
-        htmlEl.classList.add('sk-ios-device');
+        htmlEl.classList.add('CLASS_PREFIX-ios-device');
     }
 }
 
 export function allowMobilePageScroll() {
     const htmlEl = document.querySelector('html');
-    htmlEl.classList.remove('sk-widget-opened');
+    htmlEl.classList.remove('CLASS_PREFIX-widget-opened');
     if (isMobile.apple.device) {
-        htmlEl.classList.remove('sk-ios-device');
+        htmlEl.classList.remove('CLASS_PREFIX-ios-device');
     }
 }
 

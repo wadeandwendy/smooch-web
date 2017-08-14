@@ -13,7 +13,7 @@ const INITIAL_STATE = {
     emailCaptureEnabled: false,
     readOnlyEmail: false,
     embedded: false,
-    serverURL: 'https://api.smooch.io/',
+    serverURL: 'https://sparkcentral-standard.smooch.io/',
     connectNotificationTimestamp: null,
     errorNotificationMessage: null,
     introHeight: 158,
@@ -145,12 +145,6 @@ export function AppStateReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 connectNotificationTimestamp: null
-            };
-
-        case AppStateActions.SET_SERVER_URL:
-            return {
-                ...state,
-                serverURL: action.url
             };
 
         case AppStateActions.SHOW_ERROR_NOTIFICATION:

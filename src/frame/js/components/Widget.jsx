@@ -13,6 +13,7 @@ import Channel from './channels/Channel';
 import ErrorNotification from './ErrorNotification';
 import ChatInput from './ChatInput';
 import MessageIndicator from './MessageIndicator';
+import Webview from './Webview';
 
 import { resetUnreadCount } from '../actions/conversation';
 import { hasChannels } from '../utils/app';
@@ -25,7 +26,8 @@ export class WidgetComponent extends Component {
         dispatch: PropTypes.func.isRequired,
         config: PropTypes.object.isRequired,
         widgetSize: PropTypes.string.isRequired,
-        appState: PropTypes.object.isRequired
+        appState: PropTypes.object.isRequired,
+        isWebviewShown: PropTypes.bool.isRequired
     };
 
     onTouchStart = (e) => {
@@ -59,7 +61,7 @@ export class WidgetComponent extends Component {
     };
 
     render() {
-        const {appState, config, widgetSize} = this.props;
+        const {appState, config, widgetSize, isWebviewShown} = this.props;
         const {displayStyle, isBrandColorDark, isAccentColorDark, isLinkColorDark} = config.style;
 
         const settingsComponent = appState.settingsVisible ? <Settings /> : null;
@@ -137,6 +139,7 @@ export class WidgetComponent extends Component {
                            { channelsComponent }
                            <Conversation />
                            { footer }
+                           { isWebviewShown && <Webview /> }
                        </div>
                    </div>
                    { messengerButton }
@@ -144,7 +147,7 @@ export class WidgetComponent extends Component {
     }
 }
 
-export default connect(({appState: {settingsVisible, widgetState, errorNotificationMessage, showAnimation, widgetSize}, user, config}) => {
+export default connect(({appState: {settingsVisible, widgetState, errorNotificationMessage, showAnimation, widgetSize}, config, webview}) => {
     // only extract what is needed from appState as this is something that might
     // mutate a lot
     return {
@@ -155,6 +158,7 @@ export default connect(({appState: {settingsVisible, widgetState, errorNotificat
             showAnimation
         },
         config,
-        widgetSize
+        widgetSize,
+        isWebviewShown: webview.isShown
     };
 })(WidgetComponent);

@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StripeCheckout from '../lib/react-stripe-checkout';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { createTransaction } from '../actions/stripe';
 import { immediateUpdate } from '../actions/user';
 import { postPostback } from '../actions/conversation';
+import { showWebview } from '../actions/webview';
 
 import { getIntegration } from '../utils/app';
 import { bindAll } from '../utils/functions';
@@ -15,7 +17,9 @@ import Loading from './Loading';
 export class ActionComponent extends Component {
 
     static propTypes = {
-        dispatch: PropTypes.func.isRequired,
+        immediateUpdate: PropTypes.func.isRequired,
+        postPostback: PropTypes.func.isRequired,
+        createTransaction: PropTypes.func.isRequired,
         _id: PropTypes.string.isRequired,
         appName: PropTypes.string.isRequired,
         appIconUrl: PropTypes.string.isRequired,
@@ -25,10 +29,12 @@ export class ActionComponent extends Component {
         amount: PropTypes.number,
         currency: PropTypes.string,
         uri: PropTypes.string,
+        heightRatio: PropTypes.string,
         state: PropTypes.string,
         actionPaymentCompletedText: PropTypes.string.isRequired,
         integrations: PropTypes.array.isRequired,
-        user: PropTypes.object.isRequired
+        user: PropTypes.object.isRequired,
+        showWebview: PropTypes.func.isRequired
     };
 
     static defaultProps = {
@@ -47,19 +53,19 @@ export class ActionComponent extends Component {
             'onPostbackClick',
             'onStripeToken',
             'onStripeClick',
-            'onStripeClose'
+            'onStripeClose',
+            'onWebviewClick'
         );
     }
 
     onPostbackClick(e) {
         e.preventDefault();
-        const {dispatch} = this.props;
 
         this.setState({
             state: 'processing'
         });
 
-        dispatch(postPostback(this.props._id))
+        this.props.postPostback(this.props._id)
             .then(() => {
                 this.setState({
                     state: ''
@@ -73,19 +79,19 @@ export class ActionComponent extends Component {
     }
 
     onStripeToken(token) {
-        const {user, dispatch} = this.props;
+        const {user} = this.props;
         this.setState({
             hasToken: true
         });
 
         const promises = [];
         if (!user.email) {
-            promises.push(dispatch(immediateUpdate({
+            promises.push(this.props.immediateUpdate({
                 email: token.email
-            })));
+            }));
         }
 
-        const transactionPromise = dispatch(createTransaction(this.props._id, token.id))
+        const transactionPromise = createTransaction(this.props._id, token.id)
             .then(() => {
                 this.setState({
                     state: 'paid'
@@ -115,6 +121,15 @@ export class ActionComponent extends Component {
                 state: 'offered'
             });
         }
+    }
+
+    onWebviewClick(e) {
+        e.preventDefault();
+        const {showWebview, uri, heightRatio} = this.props;
+        showWebview({
+            uri,
+            heightRatio
+        });
     }
 
     render() {
@@ -190,13 +205,21 @@ export class ActionComponent extends Component {
                            { text }
                        </a>
                    </div>;
-        } else {
-            return null;
+        } else if (type === 'webview') {
+            return <div className='action'>
+                       <div className='btn btn-primary'
+                            style={ style }
+                            onClick={ this.onWebviewClick }>
+                           { text }
+                       </div>
+                   </div>;
         }
+
+        return null;
     }
 }
 
-export default connect(({ui: {text}, user, config}) => {
+const mapStateToProps = ({ui: {text}, user, config}) => {
     return {
         user,
         actionPaymentCompletedText: text.actionPaymentCompleted,
@@ -204,6 +227,15 @@ export default connect(({ui: {text}, user, config}) => {
         appName: config.app.name,
         appIconUrl: config.app.iconUrl
     };
-}, null, null, {
+};
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    showWebview,
+    postPostback,
+    immediateUpdate,
+    createTransaction
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps, null, {
     withRef: true
 })(ActionComponent);

@@ -10,6 +10,7 @@ import UserReducer from './user';
 import FayeReducer from './faye';
 import BrowserReducer from './browser';
 import IntegrationsReducer from './integrations';
+import WebviewReducer from './webview';
 
 export default enableBatching(combineReducers({
     config: ConfigReducer,
@@ -20,5 +21,6 @@ export default enableBatching(combineReducers({
     user: UserReducer,
     faye: FayeReducer,
     browser: BrowserReducer,
-    integrations: IntegrationsReducer
+    integrations: IntegrationsReducer,
+    webview: WebviewReducer
 }));

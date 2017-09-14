@@ -5,12 +5,17 @@ export default class Loading extends Component {
     static propTypes = {
         color: PropTypes.string,
         dark: PropTypes.bool,
-        style: PropTypes.object
+        style: PropTypes.object,
+        size: PropTypes.oneOf(['small', 'large'])
+    };
+
+    static defaultProps = {
+        size: 'small'
     };
 
     render() {
-        const classNames = ['fading-circle'];
-        const {color, dark, style} = this.props;
+        const {color, dark, style, size} = this.props;
+        const classNames = ['loading', 'fading-circle', size];
         const innerCircleStyle = { };
 
         if (dark) {

@@ -17,7 +17,7 @@ import Webview from './Webview';
 
 import { resetUnreadCount } from '../actions/conversation';
 import { hasChannels } from '../utils/app';
-import { DISPLAY_STYLE } from '../constants/styles';
+import { DISPLAY_STYLE, ANIMATION_TIMINGS } from '../constants/styles';
 import { WIDGET_STATE } from '../constants/app';
 import { disableAnimation } from '../actions/app-state';
 
@@ -139,7 +139,14 @@ export class WidgetComponent extends Component {
                            { channelsComponent }
                            <Conversation />
                            { footer }
-                           { isWebviewShown && <Webview /> }
+                           <ReactCSSTransitionGroup component='div'
+                                                    transitionName='webview'
+                                                    transitionAppear={ true }
+                                                    transitionAppearTimeout={ ANIMATION_TIMINGS.WEBVIEW_TRANSITION }
+                                                    transitionEnterTimeout={ ANIMATION_TIMINGS.WEBVIEW_TRANSITION }
+                                                    transitionLeaveTimeout={ ANIMATION_TIMINGS.WEBVIEW_TRANSITION }>
+                               { isWebviewShown && <Webview /> }
+                           </ReactCSSTransitionGroup>
                        </div>
                    </div>
                    { messengerButton }

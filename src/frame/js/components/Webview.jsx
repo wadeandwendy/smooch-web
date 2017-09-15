@@ -22,6 +22,40 @@ class Webview extends Component {
 
     componentDidMount() {
         setTimeout(() => this.props.showWebviewContent(), ANIMATION_TIMINGS.WEBVIEW_CONTENT_TRANSITION);
+        window.addEventListener('message', this.onMessage);
+    }
+    onMessage = ({data, origin}) => {
+        if (this.props.uri.startsWith(origin)) {
+            const action = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+
+            const result = {
+                succeed: true,
+                id: action.id
+            };
+            try {
+                this.handleMessageAction(action);
+            }
+            catch (e) {
+                result.succeed = false;
+                result.args = e;
+            }
+
+
+            this._iframe.contentWindow.postMessage(result, '*');
+        }
+    };
+
+    handleMessageAction(action) {
+        switch (action.type) {
+            case 'CLOSE_WEBVIEW':
+                this.onClose();
+                break;
+            case 'UPDATE_TITLE':
+                this.props.updateWebviewTitle(action.title);
+                break;
+            default:
+                throw new Error('Unhandled action');
+        }
     }
 
     onFrameLoad = () => {
@@ -30,6 +64,7 @@ class Webview extends Component {
 
     componentWillUnmount() {
         this.props.resetWebview();
+        window.removeEventListener('message', this.onMessage);
     }
 
     onClose = () => {
@@ -39,7 +74,6 @@ class Webview extends Component {
 
     render() {
         const {uri, heightRatio, title, isContentShown} = this.props;
-        const containerClassNames = ['webview-container', heightRatio]
         return <ReactCSSTransitionGroup component='div'
                                         transitionName='webview-content'
                                         transitionEnterTimeout={ ANIMATION_TIMINGS.WEBVIEW_CONTENT_TRANSITION }
@@ -57,7 +91,7 @@ class Webview extends Component {
                          </div>
                          <iframe ref={ (c) => this._iframe = c }
                                  id='webview-iframe'
-                                 name='smooch-web'
+                                 name='web_messenger_ref'
                                  src={ uri }
                                  onLoad={ this.onFrameLoad }
                                  sandbox='allow-same-origin allow-scripts allow-popups allow-forms'></iframe>

@@ -32,6 +32,7 @@
     "start": "node dev-server/server-production",
     "lint": "eslint . --ext=js --ext=jsx",
     "babelify": "babel -d lib/ src/js/",
+    "s3": "./aws.sh s3 sync ./dist/ s3://wwai-smooch-fork.ai",
     "dev": "nodemon --watch dev-server/ --watch src/index.html --watch src/embedded.html --watch config/config.json dev-server/server-development"
   },
   "main": "lib/main.js",

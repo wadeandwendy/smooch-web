@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import isMobile from 'ismobilejs';
 import bindAll from 'lodash.bindall';
+import Textarea from 'react-textarea-autosize';
 
 import { sendMessage, resetUnreadCount } from '../services/conversation';
 
@@ -42,16 +43,6 @@ export class ChatInputComponent extends Component {
     }
 
 
-    handleKeyDown(minRows, maxRows){
-      return (e) => {
-        const minHeight = minRows * 15;
-        const scrollHeight = e.target.scrollHeight;
-        const newHeight = scrollHeight - minHeight;
-        const newRows = Math.ceil(newHeight / 15);
-        if(newRows >= minRows && newRows <= maxRows) e.target.rows = newRows;
-      };
-    }
-
     reset(defaultRows, target) {
       target.rows = defaultRows;
     }
@@ -84,7 +75,6 @@ export class ChatInputComponent extends Component {
             });
             dispatch(sendMessage(text));
             this.refs.input.focus();
-            this.reset(this.state.minRows, document.getElementById('chat-input'));
         }
     }
 
@@ -135,17 +125,17 @@ export class ChatInputComponent extends Component {
                    <form onSubmit={ this.onSendMessage }
                          action='#'>
                        <div className={ inputContainerClasses.join(' ') }>
-                           <textarea ref='input'
-                                  rows={this.state.minRows}
-                                  id="chat-input"
-                                  onKeyDown={ this.handleKeyDown(this.state.minRows, this.state.maxRows) }
-                                  placeholder={ inputPlaceholderText }
-                                  type='textarea'
-                                  className='input message-input'
-                                  onChange={ this.onChange }
-                                  onFocus={ this.onFocus }
-                                  value={ this.state.text }
-                                  title={ sendButtonText }/>
+                           <Textarea
+                               value={this.state.text}
+                               minRows={2}
+                               maxRows={6}
+                               ref='input'
+                               id='chat-input'
+                               className='input message-input'
+                               placeholder={inputPlaceholderText}
+                               onChange={ this.onChange }
+                               onFocus={ this.onFocus }
+                           />
                        </div>
                    </form>
                    { sendButton }

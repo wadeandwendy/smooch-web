@@ -21,7 +21,9 @@ export class ChatInputComponent extends Component {
     };
 
     state = {
-        text: ''
+        text: '',
+        minRows: 2,
+        maxRows: 5
     };
 
     constructor(...args) {
@@ -46,17 +48,12 @@ export class ChatInputComponent extends Component {
         const scrollHeight = e.target.scrollHeight;
         const newHeight = scrollHeight - minHeight;
         const newRows = Math.ceil(newHeight / 15);
-        if(newRows >= minRows && newRows <= maxRows){
-          e.target.rows = newRows;
-            /* const convoContainter = document.getElementById("sk-conversation");
-             * const convoHeight = convoContainter.scrollHeight;
-             * const newConvoHeight = convoHeight - scrollHeight;
-             * console.log("new convo height: ", newConvoHeight);
-             * convoContainter.height = newConvoHeight.toString() + 'px';
-             * convoContainter.height = '0 px';
-             * console.log("convo hegiht: ", convoContainter.height);*/
-        }
+        if(newRows >= minRows && newRows <= maxRows) e.target.rows = newRows;
       };
+    }
+
+    reset(defaultRows, target) {
+      target.rows = defaultRows;
     }
 
     checkAndResetUnreadCount(unreadCount) {
@@ -87,6 +84,7 @@ export class ChatInputComponent extends Component {
             });
             dispatch(sendMessage(text));
             this.refs.input.focus();
+            this.reset(this.state.minRows, document.getElementById('chat-input'));
         }
     }
 
@@ -138,8 +136,9 @@ export class ChatInputComponent extends Component {
                          action='#'>
                        <div className={ inputContainerClasses.join(' ') }>
                            <textarea ref='input'
-                                  rows={2}
-                                  onKeyDown={ this.handleKeyDown(2, 5) }
+                                  rows={this.state.minRows}
+                                  id="chat-input"
+                                  onKeyDown={ this.handleKeyDown(this.state.minRows, this.state.maxRows) }
                                   placeholder={ inputPlaceholderText }
                                   type='textarea'
                                   className='input message-input'

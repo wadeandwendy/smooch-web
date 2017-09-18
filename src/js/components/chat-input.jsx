@@ -39,6 +39,26 @@ export class ChatInputComponent extends Component {
         this.refs.input.blur();
     }
 
+
+    handleKeyDown(minRows, maxRows){
+      return (e) => {
+        const minHeight = minRows * 15;
+        const scrollHeight = e.target.scrollHeight;
+        const newHeight = scrollHeight - minHeight;
+        const newRows = Math.ceil(newHeight / 15);
+        if(newRows >= minRows && newRows <= maxRows){
+          e.target.rows = newRows;
+            /* const convoContainter = document.getElementById("sk-conversation");
+             * const convoHeight = convoContainter.scrollHeight;
+             * const newConvoHeight = convoHeight - scrollHeight;
+             * console.log("new convo height: ", newConvoHeight);
+             * convoContainter.height = newConvoHeight.toString() + 'px';
+             * convoContainter.height = '0 px';
+             * console.log("convo hegiht: ", convoContainter.height);*/
+        }
+      };
+    }
+
     checkAndResetUnreadCount(unreadCount) {
         const {dispatch} = this.props;
         if (unreadCount > 0) {
@@ -117,13 +137,16 @@ export class ChatInputComponent extends Component {
                    <form onSubmit={ this.onSendMessage }
                          action='#'>
                        <div className={ inputContainerClasses.join(' ') }>
-                           <input ref='input'
+                           <textarea ref='input'
+                                  rows={2}
+                                  onKeyDown={ this.handleKeyDown(2, 5) }
                                   placeholder={ inputPlaceholderText }
+                                  type='textarea'
                                   className='input message-input'
                                   onChange={ this.onChange }
                                   onFocus={ this.onFocus }
                                   value={ this.state.text }
-                                  title={ sendButtonText }></input>
+                                  title={ sendButtonText }/>
                        </div>
                    </form>
                    { sendButton }

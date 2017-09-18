@@ -125,6 +125,8 @@
     #sk-wrapper {
         background: @background-color;
         width: 100%;
+        display: flex;
+        flex-direction: column;
         height: 100%;
         position: relative;
     }
@@ -139,6 +141,7 @@
     }
     #sk-conversation {
         height: ~"calc(100% - @{remaining-height})";
+        flex: 6;
         .sk-messages-container {
             position: relative;
         }

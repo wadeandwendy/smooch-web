@@ -56,9 +56,11 @@ export class ChatInputComponent extends Component {
 
     onChange(e) {
         this.checkAndResetUnreadCount(this.props.unreadCount);
-        this.setState({
+        if(e.target.value.length <= 1500) {
+          this.setState({
             text: e.target.value
-        });
+          });
+        }
     }
 
     onFocus() {
@@ -136,6 +138,10 @@ export class ChatInputComponent extends Component {
                                onChange={ this.onChange }
                                onFocus={ this.onFocus }
                            />
+                       </div>
+                       <div>
+                           Character limit {`${this.state.text.length}/1500`}
+                           <span className="urgent">{this.state.text.length === 1500 ? ' Limit Reached!' : ''}</span>
                        </div>
                    </form>
                    { sendButton }

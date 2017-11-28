@@ -15,7 +15,7 @@ import { fetchMoreMessages } from '../services/conversation';
 import { getTop, getBoundingRect } from '../utils/dom';
 import debounce from 'lodash.debounce';
 
-const INTRO_BOTTOM_SPACER = 10;
+const INTRO_BOTTOM_SPACER = -20;
 const EXTRA_COMPONENT_BOTTOM_SPACER = 10;
 const LOAD_MORE_LINK_HEIGHT = 47;
 
